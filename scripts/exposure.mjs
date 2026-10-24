@@ -147,4 +147,5 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
     ...rows.map((r) => r.error ? `| ${r.chain} | error: ${r.error} |||||||` : `| ${r.chain} | ${r.poolsFeeOnNow} | ${r.symmetric} | ${r.asymmetric} | ${r.poolsSetBackToZero} | ${r.packedAtLeast1e6} | ${r.swapsLast24h} | ${r.swapsLast24hOnFeeOnPools} |`)];
   writeFileSync("exposure/SUMMARY.md", `# v4 protocol-fee exposure (generated ${new Date().toISOString()})\n\n${md.join("\n")}\n`);
   console.log(md.join("\n"));
+  if (rows.every((r) => r.error)) process.exit(1);
 }

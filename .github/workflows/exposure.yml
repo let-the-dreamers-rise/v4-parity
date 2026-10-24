@@ -7,17 +7,21 @@ on:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        chain: [ethereum, base, arbitrum, optimism, polygon, bnb]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/exposure.mjs
+      - run: node scripts/exposure.mjs ${{ matrix.chain }}
       - if: always()
         run: cat exposure/SUMMARY.md >> "$GITHUB_STEP_SUMMARY"; cat exposure/*.json || true
       - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: exposure
+          name: exposure-${{ matrix.chain }}
           path: exposure/
