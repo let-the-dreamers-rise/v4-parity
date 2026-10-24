@@ -1,0 +1,6 @@
+zeroForOne=true SELL(exact-in): correct 996500006986746537  after-event 1048501099353402672  diff 521.8 bps  (lpFee now 2048500)
+zeroForOne=true BUY(exact-out): correct 1003512289501967386  after-event THROWS: Values: amountSpecified="1000000000000000000". Condition: params.amountSpecified < 0n violated. Error message: Invalid fee for exact out  diff n/a  (lpFee now 2048500)
+zeroForOne=false SELL(exact-in): correct 996500006986746537  after-event 1048501099353402672  diff 521.8 bps  (lpFee now 2048500)
+zeroForOne=false BUY(exact-out): correct 1003512289501967386  after-event THROWS: Values: amountSpecified="1000000000000000000". Condition: params.amountSpecified < 0n violated. Error message: Invalid fee for exact out  diff n/a  (lpFee now 2048500)
+replay zeroForOne=true: throws -> pool marked invalid and re-fetched (heals): Values: currentPrice="79228245585079833549749427249", newSqrtPriceX96="792280835
+replay zeroForOne=false: throws -> pool marked invalid and re-fetched (heals): Values: currentPrice="79228079443535941387385983506", newSqrtPriceX96="792282414

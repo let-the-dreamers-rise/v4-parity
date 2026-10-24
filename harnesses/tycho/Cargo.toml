@@ -1,0 +1,17 @@
+[package]
+name = "tycho-v4-parity"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+exclude = ["tycho-simulation-vis"]
+
+[dependencies]
+tycho-simulation = { path = "tycho-simulation-vis", default-features = false, features = ["evm"] }
+tycho-common = "*"
+alloy = { version = "1", default-features = false, features = ["std"] }
+num-bigint = "0.4"
+serde_json = "1"
+
+[profile.release]
+debug = false

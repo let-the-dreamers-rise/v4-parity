@@ -1,0 +1,777 @@
+{
+ "modes": {
+  "units": {
+   "counts": {
+    "MISMATCH": 18,
+    "PASS": 2301,
+    "TARGET_ERROR": 81,
+    "UNSUPPORTED": 0
+   },
+   "errorKinds": {
+    "getTickAtSqrtPrice: invalid sqrt ratio": 69
+   },
+   "mismatchByField": {
+    "computeSwapStep": 18
+   },
+   "mismatches": [
+    {
+     "id": "unit-246-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "3002102202991942829504387373591652293413908,12893930781099947804223047658091462211340774608345583,6276865795046577716716727052920960677582283704785630120066,38798186904011879049818598770586145069230013866637",
+     "got": "3002102202991942829504387373591652293413908,12893930781099947804223047658091462211340773079850333,6276865795046577716716727052920960677582283704785630120066,38798186904011879049818598770586145069231542361887",
+     "note": "[\"4295128739\",\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"-12932728968003959683272866256862048356410004622212220\",3000]"
+    },
+    {
+     "id": "unit-302-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543901252,775770,775765,3238339",
+     "got": "79228162514264337593543901252,775766,775765,3238343",
+     "note": "[\"79228162514264337593543950336\",\"4295128739\",\"1252189990964836246368918173638\",\"-4014109\",806739]"
+    },
+    {
+     "id": "unit-390-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543950336,10,0,1",
+     "got": "79228162514264337593543950336,0,0,11",
+     "note": "[\"79228162514264337593543950336\",\"456348550219038102061637959437283748683673396744\",\"1089435264150789856988515121233102\",\"-11\",500]"
+    },
+    {
+     "id": "unit-630-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543950336,1,0,0",
+     "got": "79228162514264337593543950336,0,0,1",
+     "note": "[\"79228162514264337593543950336\",\"337927906081466679042124677538816106473170852530\",\"340282366920938463463374607431768211455\",\"-1\",0]"
+    },
+    {
+     "id": "unit-694-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "4632844254,426193164609019875243872505,459703695501838484875605925,1133166121663568238910494487",
+     "got": "4632844254,426193164570634200232194511,459703695501838484875605925,1133166121701953913922172481",
+     "note": "[\"1461446703485210103287273052203988822378723970341\",\"4295128739\",\"24921524\",\"-1559359286272588114154366992\",726687]"
+    },
+    {
+     "id": "unit-718-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593538641831,16263171755644596,16263171490051551,0",
+     "got": "79228162514264337593538641831,16263171490051552,16263171490051551,265593044",
+     "note": "[\"79228162514264337593543950336\",\"4295128739\",\"242723929583028517793308965549995628800\",\"-16263171755644596\",0]"
+    },
+    {
+     "id": "unit-774-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543950336,4223,0,401",
+     "got": "79228162514264337593543950336,0,0,4624",
+     "note": "[\"79228162514264337593543950336\",\"4295128739\",\"340282366920938463463374607431768211455\",\"-4624\",86639]"
+    },
+    {
+     "id": "unit-782-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543950336,18731,0,11283",
+     "got": "79228162514264337593543950336,0,0,30014",
+     "note": "[\"79228162514264337593543950336\",\"4295128739\",\"5822037301828052415338325782802928\",\"-30014\",375898]"
+    },
+    {
+     "id": "unit-918-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79256365286540812874827292173,4983162521072357740186653843,4981389300747524899729496306,8372691218129420141725649715",
+     "got": "79256365286540812874827292173,4983162521072357740186653773,4981389300747524899729496306,8372691218129420141725649785",
+     "note": "[\"79228162514264337593543950336\",\"1461446703485210103287273052203988822378723970341\",\"13998865295374927173659293708841\",\"-13355853739201777881912303558\",626893]"
+    },
+    {
+     "id": "unit-998-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514272320570818029849,34286626316882737432122246,34286626316879282140807397,0",
+     "got": "79228162514272320570818029849,34286626316882736838606848,34286626316879282140807397,593515398",
+     "note": "[\"79228162514264337593543950336\",\"1422645654443603942174861771521976184184446477830\",\"340282366920938463463374607431768211455\",\"-34286626316882737432122246\",0]"
+    },
+    {
+     "id": "unit-1630-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "4295138409,41535005309499,14131626610894719253423423403756900117223589375007165,4153915923",
+     "got": "4295138409,41532333752320,14131626610894719253423423403756900117223589375007165,6825473102",
+     "note": "[\"4295128739\",\"552944345627233341471814795818820197135912329801\",\"340282366920938463463374607431768211455\",\"-41539159225422\",100]"
+    },
+    {
+     "id": "unit-1638-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543948792,6635153619587,6631429505023,6635146984434027453",
+     "got": "79228162514264337593543948792,6631429505025,6631429505023,6635146988158142015",
+     "note": "[\"79228162514264337593543950336\",\"4295128739\",\"340282366920938463463374607431768211455\",\"-6635153619587647040\",999999]"
+    },
+    {
+     "id": "unit-1742-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "19120700441024,4143580553371295,18446050711097703530,0",
+     "got": "19120700441024,4143580553371261,18446050711097703530,34",
+     "note": "[\"1461446703485210103287273052203988822378723970341\",\"4295128739\",\"1\",\"-4143580553371295\",0]"
+    },
+    {
+     "id": "unit-2030-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543950336,203222445,0,20325",
+     "got": "79228162514264337593543950336,0,0,203242770",
+     "note": "[\"79228162514264337593543950336\",\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"-203242770\",100]"
+    },
+    {
+     "id": "unit-2190-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "4295128739,29653620,0,89229",
+     "got": "4295128739,0,0,29742849",
+     "note": "[\"4295128739\",\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"-29742849\",3000]"
+    },
+    {
+     "id": "unit-2214-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "4295128739,1262570,0,106313",
+     "got": "4295128739,0,0,1368883",
+     "note": "[\"4295128739\",\"79228162514264337593543950336\",\"340282366920938463463374607431768211455\",\"-1368883\",77664]"
+    },
+    {
+     "id": "unit-2238-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "79228162514264337593543950336,77,0,1",
+     "got": "79228162514264337593543950336,0,0,78",
+     "note": "[\"79228162514264337593543950336\",\"4295128739\",\"340282366920938463463374607431768211455\",\"-78\",100]"
+    },
+    {
+     "id": "unit-2382-computeSwapStep",
+     "field": "computeSwapStep",
+     "expected": "4295128757,97,32066359140118234238243592084178962865891,0",
+     "got": "4295128757,95,32066359140118234238243592084178962865891,2",
+     "note": "[\"4295128739\",\"152587937210428311931710435644075096453408762250\",\"414810686640195312587846798479\",\"-97\",0]"
+    }
+   ],
+   "targetErrors": [
+    {
+     "id": "unit-17-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-49-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-101-getNextSqrtPriceFromOutput",
+     "field": "outcome",
+     "expected": "revert 0x93dafdf1",
+     "got": "1490794411648907416389439085277047349742854008339",
+     "note": "[\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"363155379966371372\",false]"
+    },
+    {
+     "id": "unit-129-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-134-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[4295128739 18446050707367246064 15303753803915963625 0]",
+     "note": "[\"1212488293454945013204919826328373575327484991946\",\"4295128739\",\"1\",\"80988928637865648627508202832771218045\",1000000]"
+    },
+    {
+     "id": "unit-169-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-185-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-249-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-273-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-281-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-313-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-361-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-369-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-438-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[1461446703485210103287273052203988822378723970341 0 0 0]",
+     "note": "[\"1461446703485210103287273052203988822378723970341\",\"1461446703485210103287273052203988822378723970341\",\"31249390\",\"12596627776\",1000000]"
+    },
+    {
+     "id": "unit-441-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-457-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-465-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-553-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-577-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-633-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-673-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-681-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-758-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[1461446703485210103287273052203988822378723970341 18446050711097703531 18446050707367246063 0]",
+     "note": "[\"4295128739\",\"1461446703485210103287273052203988822378723970341\",\"1\",\"2890400792881705128529579563462316246\",1000000]"
+    },
+    {
+     "id": "unit-785-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-817-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-854-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[1336166489319241547939538626478800329208620736092 74654263981961664159168597063583217295749934067056 4426634110663198869792342763626 0]",
+     "note": "[\"79228162514264337593543950336\",\"1336166489319241547939538626478800329208620736092\",\"4426634110663198870054820598174\",\"2798679874269419444536565941239164\",1000000]"
+    },
+    {
+     "id": "unit-905-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-921-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-929-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1017-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1025-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1033-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1065-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1097-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1145-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1153-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1177-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1182-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[713766398508511840317770660539103512199798906197 1 5532295555591459312 0]",
+     "note": "[\"1152080009863854293820704891189966162799836288655\",\"713766398508511840317770660539103512199798906197\",\"1\",\"11719325529271494628380571769109514190\",1000000]"
+    },
+    {
+     "id": "unit-1185-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1209-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1233-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1297-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1313-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1345-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1405-getNextSqrtPriceFromOutput",
+     "field": "outcome",
+     "expected": "revert 0x93dafdf1",
+     "got": "1478514640300333538681868370331700572724685046245",
+     "note": "[\"1461446703485210103287273052203988822378723970341\",\"8741607145428472248117784811296722\",\"5470704839852\",false]"
+    },
+    {
+     "id": "unit-1457-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1473-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1529-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1542-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[187913483589039890152586851536046393420752200583 1 1006871803363 0]",
+     "note": "[\"187913486339819299389627189608123392765829089548\",\"4295128739\",\"29\",\"1006871803363\",1000000]"
+    },
+    {
+     "id": "unit-1545-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1561-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1569-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1573-getNextSqrtPriceFromOutput",
+     "field": "outcome",
+     "expected": "revert 0x93dafdf1",
+     "got": "1461962131317746999895783668439373589223926729372",
+     "note": "[\"1461446703485210103287273052203988822378723970341\",\"2442473582421258921933625419975433632\",\"46682942204551\",false]"
+    },
+    {
+     "id": "unit-1577-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1665-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1701-getNextSqrtPriceFromOutput",
+     "field": "outcome",
+     "expected": "revert 0x93dafdf1",
+     "got": "1616570796981587785807654698437469474805286222635",
+     "note": "[\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"1770192817429712745\",false]"
+    },
+    {
+     "id": "unit-1705-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1729-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1737-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1769-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1793-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1801-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1809-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1833-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1849-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1862-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[79228162514264337593543950336 1 5701796192631903595 0]",
+     "note": "[\"451742835373054106586659947432632303678076551109\",\"79228162514264337593543950336\",\"1\",\"238393948492605095376268\",1000000]"
+    },
+    {
+     "id": "unit-1870-computeSwapStep",
+     "field": "outcome",
+     "expected": "revert unknown",
+     "got": "[4295128739 18446050707367246063 0 0]",
+     "note": "[\"79228162514264337593543950336\",\"4295128739\",\"1\",\"144813833772260999\",1000000]"
+    },
+    {
+     "id": "unit-1913-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1929-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1961-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-1993-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2033-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2105-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2121-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2209-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2217-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2249-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2313-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2321-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2345-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    },
+    {
+     "id": "unit-2353-getTickAtSqrtPrice",
+     "field": "outcome",
+     "expected": "887271",
+     "got": "error: invalid sqrt ratio",
+     "note": "[\"1461446703485210103287273052203988822378723970341\"]"
+    }
+   ]
+  },
+  "units:calculateSwapFee": {
+   "counts": {
+    "PASS": 300
+   },
+   "mismatches": null,
+   "targetErrors": null
+  },
+  "units:computeSwapStep": {
+   "counts": {
+    "MISMATCH": 18,
+    "PASS": 274,
+    "TARGET_ERROR": 8
+   },
+   "mismatches": null,
+   "targetErrors": null
+  },
+  "units:getAmount0Delta": {
+   "counts": {
+    "PASS": 300
+   },
+   "mismatches": null,
+   "targetErrors": null
+  },
+  "units:getAmount1Delta": {
+   "counts": {
+    "PASS": 300
+   },
+   "mismatches": null,
+   "targetErrors": null
+  },
+  "units:getNextSqrtPriceFromInput": {
+   "counts": {
+    "PASS": 300
+   },
+   "mismatches": null,
+   "targetErrors": null
+  },
+  "units:getNextSqrtPriceFromOutput": {
+   "counts": {
+    "PASS": 296,
+    "TARGET_ERROR": 4
+   },
+   "mismatches": null,
+   "targetErrors": null
+  },
+  "units:getSqrtPriceAtTick": {
+   "counts": {
+    "PASS": 300
+   },
+   "mismatches": null,
+   "targetErrors": null
+  },
+  "units:getTickAtSqrtPrice": {
+   "counts": {
+    "PASS": 231,
+    "TARGET_ERROR": 69
+   },
+   "mismatches": null,
+   "targetErrors": null
+  }
+ },
+ "target": "github.com/KyberNetwork/kyberswap-dex-lib@ec21cb6b8a811198dda0dcbe274f51dd1aac1241 (v0.134.47) pkg/liquidity-source/uniswap/v4",
+ "vectors": "../../../v4-parity/vectors/units.json"
+}

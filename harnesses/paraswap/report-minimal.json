@@ -1,0 +1,277 @@
+{
+ "target": "paraswap-dex-lib@291393f0f489b9fe9b0e2ddc3313724f4dbb5cd2 (npm @paraswap/dex-lib 5.1.28) src/dex/uniswap-v4",
+ "vectors": "harness/minimal-vectors.json",
+ "n": 7,
+ "kind": "swaps",
+ "modes": {
+  "chain": {
+   "desc": "state as generateState() reads it from chain (slot0.protocolFee+lpFee, all ticks); _swap() with the vector price limit; lpFeeOverride=0 as production",
+   "counts": {
+    "PASS": 7,
+    "MISMATCH": 0,
+    "TARGET_ERROR": 0,
+    "UNSUPPORTED": 0
+   },
+   "unsupported": {},
+   "mismatches": [],
+   "targetErrors": []
+  },
+  "chainOverride": {
+   "desc": "same as chain, but the vector lpFeeOverride passed into _swap() (capability check; production never passes it)",
+   "counts": {
+    "PASS": 0,
+    "MISMATCH": 0,
+    "TARGET_ERROR": 0,
+    "UNSUPPORTED": 0
+   },
+   "unsupported": {},
+   "mismatches": [],
+   "targetErrors": []
+  },
+  "query": {
+   "desc": "production entrypoint queryOutputs() (SELL for exact-in, BUY for exact-out), only on non-reverting vectors that filled fully (price limit not binding)",
+   "counts": {
+    "PASS": 6,
+    "MISMATCH": 0,
+    "TARGET_ERROR": 0,
+    "UNSUPPORTED": 1
+   },
+   "unsupported": {
+    "price limit reached (binding) - not expressible via queryOutputs": 1
+   },
+   "mismatches": [],
+   "targetErrors": []
+  },
+  "eventBuilt": {
+   "desc": "state built purely from events: Initialize -> ModifyLiquidity* -> ProtocolFeeUpdated (handlers as in uniswap-v4-pool.ts); _swap() with vector params",
+   "counts": {
+    "PASS": 2,
+    "MISMATCH": 5,
+    "TARGET_ERROR": 0,
+    "UNSUPPORTED": 0
+   },
+   "unsupported": {},
+   "mismatches": [
+    {
+     "id": "min-pf-250-0-z4o-in",
+     "fields": [
+      {
+       "field": "amount1",
+       "expected": "996749006490427780",
+       "got": "999749000500936749"
+      }
+     ],
+     "pool": {
+      "lpFee": 3000,
+      "pf0": 250,
+      "pf1": 0,
+      "ts": 60
+     },
+     "swap": {
+      "zeroForOne": true,
+      "amountSpecified": "-1000000000000000000",
+      "sqrtPriceLimitX96": "4295128740",
+      "lpFeeOverride": 0
+     }
+    },
+    {
+     "id": "min-pf-250-0-o4z-in",
+     "fields": [
+      {
+       "field": "amount0",
+       "expected": "996999005991991025",
+       "got": "999749000500936749"
+      }
+     ],
+     "pool": {
+      "lpFee": 3000,
+      "pf0": 250,
+      "pf1": 0,
+      "ts": 60
+     },
+     "swap": {
+      "zeroForOne": false,
+      "amountSpecified": "-1000000000000000000",
+      "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341",
+      "lpFeeOverride": 0
+     }
+    },
+    {
+     "id": "min-pf-250-0-z4o-out",
+     "fields": [
+      {
+       "field": "amount0",
+       "expected": "-1003261600201655382",
+       "got": "-1000251062766691675"
+      }
+     ],
+     "pool": {
+      "lpFee": 3000,
+      "pf0": 250,
+      "pf1": 0,
+      "ts": 60
+     },
+     "swap": {
+      "zeroForOne": true,
+      "amountSpecified": "1000000000000000000",
+      "sqrtPriceLimitX96": "4295128740",
+      "lpFeeOverride": 0
+     }
+    },
+    {
+     "id": "min-pf-50-50-z4o-in",
+     "fields": [
+      {
+       "field": "amount1",
+       "expected": "996949006091688376",
+       "got": "795149367736980243"
+      }
+     ],
+     "pool": {
+      "lpFee": 3000,
+      "pf0": 50,
+      "pf1": 50,
+      "ts": 60
+     },
+     "swap": {
+      "zeroForOne": true,
+      "amountSpecified": "-1000000000000000000",
+      "sqrtPriceLimitX96": "4295128740",
+      "lpFeeOverride": 0
+     }
+    },
+    {
+     "id": "min-pf-50-50-o4z-out",
+     "fields": [
+      {
+       "field": "amount1",
+       "expected": "-1003060334019760271",
+       "got": "-1257625605232974913"
+      }
+     ],
+     "pool": {
+      "lpFee": 3000,
+      "pf0": 50,
+      "pf1": 50,
+      "ts": 60
+     },
+     "swap": {
+      "zeroForOne": false,
+      "amountSpecified": "1000000000000000000",
+      "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341",
+      "lpFeeOverride": 0
+     }
+    }
+   ],
+   "targetErrors": []
+  },
+  "eventReplay": {
+   "desc": "chain state, then the v4 Swap event (expected result) is replayed through swapFromEvent(); compare resulting sqrtPrice/tick/liquidity",
+   "counts": {
+    "PASS": 6,
+    "MISMATCH": 0,
+    "TARGET_ERROR": 1,
+    "UNSUPPORTED": 0
+   },
+   "unsupported": {},
+   "mismatches": [],
+   "targetErrors": [
+    {
+     "id": "min-range-ts1",
+     "kind": "swapFromEvent threw on a real v4 Swap event (pool would be marked invalid and re-fetched)",
+     "msg": "Values: currentPrice=\"112428146980036109168897402316\", newSqrtPriceX96=\"124251697196845557112282348179\", currentTick=\"7000\", newTick=\"9000\". Condition: currentPrice === newSqrtPriceX96 && currentTick ",
+     "amounts": [
+      "295299578953899330302",
+      "-419084625246400636172"
+     ],
+     "swap": {
+      "zeroForOne": false,
+      "amountSpecified": "-1000000000000000000000000000000",
+      "sqrtPriceLimitX96": "124251697196845557112282348179",
+      "lpFeeOverride": 0
+     }
+    }
+   ]
+  },
+  "chainRange12": {
+   "desc": "chain state but bitmap/ticks only for words within +-12 of the current word (paraswap default request range, non-mainnet)",
+   "counts": {
+    "PASS": 6,
+    "MISMATCH": 1,
+    "TARGET_ERROR": 0,
+    "UNSUPPORTED": 0
+   },
+   "unsupported": {},
+   "mismatches": [
+    {
+     "id": "min-range-ts1",
+     "fields": [
+      {
+       "field": "amount0",
+       "expected": "295299578953899330302",
+       "got": "362357502539806398420"
+      },
+      {
+       "field": "amount1",
+       "expected": "-419084625246400636172",
+       "got": "-568333734588669126980"
+      }
+     ],
+     "pool": {
+      "lpFee": 100,
+      "pf0": 0,
+      "pf1": 0,
+      "ts": 1
+     },
+     "swap": {
+      "zeroForOne": false,
+      "amountSpecified": "-1000000000000000000000000000000",
+      "sqrtPriceLimitX96": "124251697196845557112282348179",
+      "lpFeeOverride": 0
+     }
+    }
+   ],
+   "targetErrors": []
+  },
+  "chainRange24": {
+   "desc": "same with +-24 words (mainnet request range)",
+   "counts": {
+    "PASS": 6,
+    "MISMATCH": 1,
+    "TARGET_ERROR": 0,
+    "UNSUPPORTED": 0
+   },
+   "unsupported": {},
+   "mismatches": [
+    {
+     "id": "min-range-ts1",
+     "fields": [
+      {
+       "field": "amount0",
+       "expected": "295299578953899330302",
+       "got": "362357502539806398420"
+      },
+      {
+       "field": "amount1",
+       "expected": "-419084625246400636172",
+       "got": "-568333734588669126980"
+      }
+     ],
+     "pool": {
+      "lpFee": 100,
+      "pf0": 0,
+      "pf1": 0,
+      "ts": 1
+     },
+     "swap": {
+      "zeroForOne": false,
+      "amountSpecified": "-1000000000000000000000000000000",
+      "sqrtPriceLimitX96": "124251697196845557112282348179",
+      "lpFeeOverride": 0
+     }
+    }
+   ],
+   "targetErrors": []
+  }
+ }
+}

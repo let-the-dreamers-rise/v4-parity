@@ -1,0 +1,23 @@
+name: exposure
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [scripts/exposure.mjs, .github/workflows/exposure.yml]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/exposure.mjs
+      - if: always()
+        run: cat exposure/SUMMARY.md >> "$GITHUB_STEP_SUMMARY" && cat exposure/*.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exposure
+          path: exposure/

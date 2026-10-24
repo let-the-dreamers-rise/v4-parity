@@ -1,0 +1,39 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  oracle:
+    runs-on: ubuntu-latest
+    env:
+      V4CORE_COMMIT: 46c6834698c48bc4a463a86d8420f4eb1d7f3b75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: v4-core at the pinned commit
+        run: |
+          git clone https://github.com/Uniswap/v4-core lib/v4-core
+          git -C lib/v4-core checkout 46c6834698c48bc4a463a86d8420f4eb1d7f3b75
+          git -C lib/v4-core submodule update --init --depth 1 lib/forge-std lib/solmate
+      - run: forge build
+      - run: npm ci
+      - name: vectors are reproducible byte-for-byte
+        run: |
+          node gen/generate.mjs --seed 1 --swaps 3000 --units 2400 --out /tmp/v1
+          node gen/generate.mjs --seed 2 --swaps 3000 --units 0 --protocolfee off --out /tmp/v2
+          cmp /tmp/v1/swaps.json vectors/swaps.json
+          cmp /tmp/v1/units.json vectors/units.json
+          cmp /tmp/v2/swaps.json vectors-nopf/swaps.json
+      - name: every vector matches the real PoolManager
+        run: node gen/codegen-manager-test.mjs vectors/swaps.json 100000 && forge test
+  ts-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - working-directory: harnesses/v4-sdk-ts
+        run: |
+          npm ci
+          node harness.mjs ../../vectors/swaps.json --out /tmp/r1.json
+          node harness.mjs ../../vectors-nopf/swaps.json --out /tmp/r2.json

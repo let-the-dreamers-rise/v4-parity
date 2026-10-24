@@ -1,0 +1,243 @@
+{
+ "generator": "paraswap-harness/oracle.mjs (v4-parity Oracle)",
+ "vectors": [
+  {
+   "id": "min-pf-250-0-z4o-in",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 250,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -6000,
+      "tickUpper": 6000,
+      "liquidity": "1000000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": true,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "4295128740",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "-1000000000000000000",
+    "amount1": "996749006490427780",
+    "amountToProtocol": "250000000000000",
+    "swapFee": 3250,
+    "sqrtPriceX96": "79228083543672065438412724599",
+    "tick": -1,
+    "liquidity": "1000000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf-250-0-o4z-in",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 250,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -6000,
+      "tickUpper": 6000,
+      "liquidity": "1000000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": false,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "996999005991991025",
+    "amount1": "-1000000000000000000",
+    "amountToProtocol": "0",
+    "swapFee": 3000,
+    "sqrtPriceX96": "79228241504742364315088531099",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf-250-0-z4o-out",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 250,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -6000,
+      "tickUpper": 6000,
+      "liquidity": "1000000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": true,
+    "amountSpecified": "1000000000000000000",
+    "sqrtPriceLimitX96": "4295128740",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "-1003261600201655382",
+    "amount1": "1000000000000000000",
+    "amountToProtocol": "250815400050413",
+    "swapFee": 3250,
+    "sqrtPriceX96": "79228083286101823329206356792",
+    "tick": -1,
+    "liquidity": "1000000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf-50-50-z4o-in",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 50,
+    "protocolFeeOneForZero": 50,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -6000,
+      "tickUpper": 6000,
+      "liquidity": "1000000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": true,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "4295128740",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "-1000000000000000000",
+    "amount1": "996949006091688376",
+    "amountToProtocol": "50000000000000",
+    "swapFee": 3050,
+    "sqrtPriceX96": "79228083527826464526950140194",
+    "tick": -1,
+    "liquidity": "1000000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf-50-50-o4z-out",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 50,
+    "protocolFeeOneForZero": 50,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -6000,
+      "tickUpper": 6000,
+      "liquidity": "1000000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": false,
+    "amountSpecified": "1000000000000000000",
+    "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "1000000000000000000",
+    "amount1": "-1003060334019760271",
+    "amountToProtocol": "50153016700988",
+    "swapFee": 3050,
+    "sqrtPriceX96": "79228241742506080099624049961",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf-0-z4o-in",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 0,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -6000,
+      "tickUpper": 6000,
+      "liquidity": "1000000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": true,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "4295128740",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "-1000000000000000000",
+    "amount1": "996999005991991025",
+    "amountToProtocol": "0",
+    "swapFee": 3000,
+    "sqrtPriceX96": "79228083523865064300074843162",
+    "tick": -1,
+    "liquidity": "1000000000000000000000000"
+   }
+  },
+  {
+   "id": "min-range-ts1",
+   "pool": {
+    "tickSpacing": 1,
+    "lpFee": 100,
+    "protocolFeeZeroForOne": 0,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -100,
+      "tickUpper": 7000,
+      "liquidity": "1000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": false,
+    "amountSpecified": "-1000000000000000000000000000000",
+    "sqrtPriceLimitX96": "124251697196845557112282348179",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "295299578953899330302",
+    "amount1": "-419084625246400636172",
+    "amountToProtocol": "0",
+    "swapFee": 100,
+    "sqrtPriceX96": "124251697196845557112282348179",
+    "tick": 9000,
+    "liquidity": "0"
+   }
+  }
+ ]
+}

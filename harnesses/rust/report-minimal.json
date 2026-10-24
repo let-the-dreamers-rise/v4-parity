@@ -1,0 +1,127 @@
+{
+  "constructor_tick_differs_from_slot0_tick": 0,
+  "highLevelAPI_get_output_amount_get_input_amount_modeB": {
+    "counts": {
+      "pass": 5
+    },
+    "mismatches": [],
+    "target_errors": [],
+    "unsupported": []
+  },
+  "highLevelAPI_partial_fills": [],
+  "modeA_calculated_side_error_bps": {
+    "max": 10.000039970160408,
+    "n": 3,
+    "p50": 5.002501250624273,
+    "p90": 5.002501250624273
+  },
+  "modeA_integrator": {
+    "counts": {
+      "mismatch": 3,
+      "pass": 2,
+      "unsupported": 1
+    },
+    "mismatches": [
+      {
+        "diffs": [
+          {
+            "expected": "995011965097726768",
+            "field": "amount1",
+            "got": "996006981039903216",
+            "id": "min-pf-3000-1000-exactIn"
+          },
+          {
+            "expected": "79149329544589937382141525231",
+            "field": "sqrtPriceX96",
+            "got": "79149250711305166342700278159",
+            "id": "min-pf-3000-1000-exactIn"
+          }
+        ],
+        "fields": [
+          "amount1",
+          "sqrtPriceX96"
+        ],
+        "id": "min-pf-3000-1000-exactIn",
+        "lpFee": 3000,
+        "protocolFee": 1000,
+        "swapFee": 3997
+      },
+      {
+        "diffs": [
+          {
+            "expected": "-1002003004005006009",
+            "field": "amount1",
+            "got": "-1001501751876939472",
+            "id": "min-pf-500-500-exactOut"
+          }
+        ],
+        "fields": [
+          "amount1"
+        ],
+        "id": "min-pf-500-500-exactOut",
+        "lpFee": 500,
+        "protocolFee": 500,
+        "swapFee": 1000
+      },
+      {
+        "diffs": [
+          {
+            "expected": "998851298529165613",
+            "field": "amount0",
+            "got": "998901198691428440",
+            "id": "min-pf-100-50-exactIn"
+          },
+          {
+            "expected": "79307378792554224791486855254",
+            "field": "sqrtPriceX96",
+            "got": "79307382753962350504703734931",
+            "id": "min-pf-100-50-exactIn"
+          }
+        ],
+        "fields": [
+          "amount0",
+          "sqrtPriceX96"
+        ],
+        "id": "min-pf-100-50-exactIn",
+        "lpFee": 100,
+        "protocolFee": 50,
+        "swapFee": 150
+      }
+    ],
+    "target_errors": [],
+    "unsupported": [
+      {
+        "id": "lpfee-1e6-exactIn",
+        "reason": "constructor rejects lpFee 1000000: panic: FEE"
+      }
+    ]
+  },
+  "modeA_integrator_only_vectors_without_protocolFee_or_override": {
+    "counts": {
+      "pass": 2,
+      "unsupported": 1
+    },
+    "mismatches": [],
+    "target_errors": [],
+    "unsupported": []
+  },
+  "modeB_fee_field_set_to_v4_swapFee": {
+    "counts": {
+      "pass": 5,
+      "target_error": 1
+    },
+    "mismatches": [],
+    "target_errors": [
+      {
+        "detail": "target failed where v4 succeeded: v3_swap: MulDivOverflow",
+        "id": "lpfee-1e6-exactIn",
+        "lpFee": 1000000,
+        "swapFee": 1000000
+      }
+    ],
+    "unsupported": []
+  },
+  "n": 6,
+  "target": "uniswap-v4-sdk 2.0.0 (+ uniswap-v3-sdk 7.0.0 v3_swap)",
+  "vectors": "minimal.json"
+}

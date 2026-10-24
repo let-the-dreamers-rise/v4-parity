@@ -1,0 +1,3260 @@
+{
+  "uniswap-v3-sdk 7.0.0 (used by uniswap-v4-sdk 2.0.0)": {
+    "counts": {
+      "pass": 2094,
+      "target_error": 6,
+      "unsupported": 300
+    },
+    "mismatches": [],
+    "per_fn": {
+      "calculateSwapFee": {
+        "unsupported": 300
+      },
+      "computeSwapStep": {
+        "pass": 294,
+        "target_error": 6
+      },
+      "getAmount0Delta": {
+        "pass": 300
+      },
+      "getAmount1Delta": {
+        "pass": 300
+      },
+      "getNextSqrtPriceFromInput": {
+        "pass": 300
+      },
+      "getNextSqrtPriceFromOutput": {
+        "pass": 300
+      },
+      "getSqrtPriceAtTick": {
+        "pass": 300
+      },
+      "getTickAtSqrtPrice": {
+        "pass": 300
+      }
+    },
+    "target_errors": [
+      {
+        "args": [
+          "1050967711104805009749695378965554792261800915087",
+          "4295128739",
+          "0",
+          "-66337950033594281900413963085129263013179800080104346365825",
+          1000000
+        ],
+        "expected": [
+          "4295128739",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "MulDivOverflow",
+        "id": "unit-14-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "1207733185329394882177616004559552908118235642224",
+          "0",
+          "-1",
+          1000000
+        ],
+        "expected": [
+          "1207733185329394882177616004559552908118235642224",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "MulDivOverflow",
+        "id": "unit-70-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "4295128739",
+          "16993722908495894",
+          "-12962784343751310025",
+          1000000
+        ],
+        "expected": [
+          "4295128739",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "MulDivOverflow",
+        "id": "unit-1334-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "829808060581537912821086290565798922620923714227",
+          "0",
+          "-3583999846322564",
+          1000000
+        ],
+        "expected": [
+          "829808060581537912821086290565798922620923714227",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "MulDivOverflow",
+        "id": "unit-1606-computeSwapStep"
+      },
+      {
+        "args": [
+          "446501730764751141217503387328595472077913923151",
+          "624630135718675683484514094834770793393104790688",
+          "0",
+          "-30878749219678415426577726098738629",
+          1000000
+        ],
+        "expected": [
+          "624630135718675683484514094834770793393104790688",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "MulDivOverflow",
+        "id": "unit-1982-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "79228162514264337593543950336",
+          "0",
+          "-1618264664954657056576506524733108451609",
+          1000000
+        ],
+        "expected": [
+          "79228162514264337593543950336",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "MulDivOverflow",
+        "id": "unit-2326-computeSwapStep"
+      }
+    ],
+    "unsupported": [
+      {
+        "id": "unit-7-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-15-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-23-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-31-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-39-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-47-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-55-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-63-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-71-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-79-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-87-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-95-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-103-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-111-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-119-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-127-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-135-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-143-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-151-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-159-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-167-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-175-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-183-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-191-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-199-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-207-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-215-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-223-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-231-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-239-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-247-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-255-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-263-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-271-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-279-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-287-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-295-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-303-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-311-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-319-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-327-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-335-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-343-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-351-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-359-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-367-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-375-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-383-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-391-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-399-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-407-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-415-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-423-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-431-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-439-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-447-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-455-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-463-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-471-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-479-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-487-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-495-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-503-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-511-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-519-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-527-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-535-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-543-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-551-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-559-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-567-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-575-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-583-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-591-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-599-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-607-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-615-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-623-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-631-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-639-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-647-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-655-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-663-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-671-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-679-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-687-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-695-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-703-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-711-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-719-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-727-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-735-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-743-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-751-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-759-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-767-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-775-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-783-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-791-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-799-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-807-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-815-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-823-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-831-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-839-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-847-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-855-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-863-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-871-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-879-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-887-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-895-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-903-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-911-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-919-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-927-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-935-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-943-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-951-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-959-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-967-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-975-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-983-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-991-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-999-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1007-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1015-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1023-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1031-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1039-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1047-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1055-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1063-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1071-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1079-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1087-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1095-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1103-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1111-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1119-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1127-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1135-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1143-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1151-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1159-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1167-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1175-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1183-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1191-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1199-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1207-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1215-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1223-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1231-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1239-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1247-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1255-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1263-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1271-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1279-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1287-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1295-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1303-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1311-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1319-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1327-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1335-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1343-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1351-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1359-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1367-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1375-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1383-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1391-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1399-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1407-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1415-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1423-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1431-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1439-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1447-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1455-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1463-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1471-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1479-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1487-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1495-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1503-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1511-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1519-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1527-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1535-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1543-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1551-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1559-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1567-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1575-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1583-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1591-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1599-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1607-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1615-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1623-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1631-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1639-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1647-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1655-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1663-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1671-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1679-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1687-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1695-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1703-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1711-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1719-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1727-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1735-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1743-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1751-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1759-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1767-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1775-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1783-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1791-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1799-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1807-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1815-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1823-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1831-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1839-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1847-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1855-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1863-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1871-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1879-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1887-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1895-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1903-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1911-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1919-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1927-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1935-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1943-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1951-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1959-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1967-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1975-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1983-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1991-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1999-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2007-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2015-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2023-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2031-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2039-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2047-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2055-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2063-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2071-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2079-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2087-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2095-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2103-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2111-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2119-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2127-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2135-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2143-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2151-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2159-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2167-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2175-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2183-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2191-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2199-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2207-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2215-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2223-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2231-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2239-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2247-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2255-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2263-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2271-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2279-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2287-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2295-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2303-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2311-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2319-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2327-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2335-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2343-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2351-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2359-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2367-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2375-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2383-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2391-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2399-calculateSwapFee",
+        "reason": "no such function in target"
+      }
+    ]
+  },
+  "uniswap_v3_math 0.6.2": {
+    "counts": {
+      "mismatch": 18,
+      "pass": 2072,
+      "target_error": 10,
+      "unsupported": 300
+    },
+    "mismatches": [
+      {
+        "args": [
+          "4295128739",
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "-12932728968003959683272866256862048356410004622212220",
+          3000
+        ],
+        "expected": "12893930781099947804223047658091462211340774608345583",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "12893930781099947804223047658091462211340773079850333",
+        "id": "unit-246-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "-12932728968003959683272866256862048356410004622212220",
+          3000
+        ],
+        "expected": "38798186904011879049818598770586145069230013866637",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "38798186904011879049818598770586145069231542361887",
+        "id": "unit-246-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "1252189990964836246368918173638",
+          "-4014109",
+          806739
+        ],
+        "expected": "775770",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "775766",
+        "id": "unit-302-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "1252189990964836246368918173638",
+          "-4014109",
+          806739
+        ],
+        "expected": "3238339",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "3238343",
+        "id": "unit-302-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "456348550219038102061637959437283748683673396744",
+          "1089435264150789856988515121233102",
+          "-11",
+          500
+        ],
+        "expected": "10",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-390-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "456348550219038102061637959437283748683673396744",
+          "1089435264150789856988515121233102",
+          "-11",
+          500
+        ],
+        "expected": "1",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "11",
+        "id": "unit-390-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "337927906081466679042124677538816106473170852530",
+          "340282366920938463463374607431768211455",
+          "-1",
+          0
+        ],
+        "expected": "1",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-630-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "337927906081466679042124677538816106473170852530",
+          "340282366920938463463374607431768211455",
+          "-1",
+          0
+        ],
+        "expected": "0",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "1",
+        "id": "unit-630-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "4295128739",
+          "24921524",
+          "-1559359286272588114154366992",
+          726687
+        ],
+        "expected": "426193164609019875243872505",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "426193164570634200232194511",
+        "id": "unit-694-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "4295128739",
+          "24921524",
+          "-1559359286272588114154366992",
+          726687
+        ],
+        "expected": "1133166121663568238910494487",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "1133166121701953913922172481",
+        "id": "unit-694-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "242723929583028517793308965549995628800",
+          "-16263171755644596",
+          0
+        ],
+        "expected": "16263171755644596",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "16263171490051552",
+        "id": "unit-718-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "242723929583028517793308965549995628800",
+          "-16263171755644596",
+          0
+        ],
+        "expected": "0",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "265593044",
+        "id": "unit-718-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "340282366920938463463374607431768211455",
+          "-4624",
+          86639
+        ],
+        "expected": "4223",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-774-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "340282366920938463463374607431768211455",
+          "-4624",
+          86639
+        ],
+        "expected": "401",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "4624",
+        "id": "unit-774-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "5822037301828052415338325782802928",
+          "-30014",
+          375898
+        ],
+        "expected": "18731",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-782-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "5822037301828052415338325782802928",
+          "-30014",
+          375898
+        ],
+        "expected": "11283",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "30014",
+        "id": "unit-782-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "1461446703485210103287273052203988822378723970341",
+          "13998865295374927173659293708841",
+          "-13355853739201777881912303558",
+          626893
+        ],
+        "expected": "4983162521072357740186653843",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "4983162521072357740186653773",
+        "id": "unit-918-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "1461446703485210103287273052203988822378723970341",
+          "13998865295374927173659293708841",
+          "-13355853739201777881912303558",
+          626893
+        ],
+        "expected": "8372691218129420141725649715",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "8372691218129420141725649785",
+        "id": "unit-918-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "1422645654443603942174861771521976184184446477830",
+          "340282366920938463463374607431768211455",
+          "-34286626316882737432122246",
+          0
+        ],
+        "expected": "34286626316882737432122246",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "34286626316882736838606848",
+        "id": "unit-998-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "1422645654443603942174861771521976184184446477830",
+          "340282366920938463463374607431768211455",
+          "-34286626316882737432122246",
+          0
+        ],
+        "expected": "0",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "593515398",
+        "id": "unit-998-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "552944345627233341471814795818820197135912329801",
+          "340282366920938463463374607431768211455",
+          "-41539159225422",
+          100
+        ],
+        "expected": "41535005309499",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "41532333752320",
+        "id": "unit-1630-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "552944345627233341471814795818820197135912329801",
+          "340282366920938463463374607431768211455",
+          "-41539159225422",
+          100
+        ],
+        "expected": "4153915923",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "6825473102",
+        "id": "unit-1630-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "340282366920938463463374607431768211455",
+          "-6635153619587647040",
+          999999
+        ],
+        "expected": "6635153619587",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "6631429505025",
+        "id": "unit-1638-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "340282366920938463463374607431768211455",
+          "-6635153619587647040",
+          999999
+        ],
+        "expected": "6635146984434027453",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "6635146988158142015",
+        "id": "unit-1638-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "4295128739",
+          "1",
+          "-4143580553371295",
+          0
+        ],
+        "expected": "4143580553371295",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "4143580553371261",
+        "id": "unit-1742-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "4295128739",
+          "1",
+          "-4143580553371295",
+          0
+        ],
+        "expected": "0",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "34",
+        "id": "unit-1742-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "-203242770",
+          100
+        ],
+        "expected": "203222445",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-2030-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "-203242770",
+          100
+        ],
+        "expected": "20325",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "203242770",
+        "id": "unit-2030-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "-29742849",
+          3000
+        ],
+        "expected": "29653620",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-2190-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "-29742849",
+          3000
+        ],
+        "expected": "89229",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "29742849",
+        "id": "unit-2190-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "79228162514264337593543950336",
+          "340282366920938463463374607431768211455",
+          "-1368883",
+          77664
+        ],
+        "expected": "1262570",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-2214-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "79228162514264337593543950336",
+          "340282366920938463463374607431768211455",
+          "-1368883",
+          77664
+        ],
+        "expected": "106313",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "1368883",
+        "id": "unit-2214-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "340282366920938463463374607431768211455",
+          "-78",
+          100
+        ],
+        "expected": "77",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "0",
+        "id": "unit-2238-computeSwapStep"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "4295128739",
+          "340282366920938463463374607431768211455",
+          "-78",
+          100
+        ],
+        "expected": "1",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "78",
+        "id": "unit-2238-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "152587937210428311931710435644075096453408762250",
+          "414810686640195312587846798479",
+          "-97",
+          0
+        ],
+        "expected": "97",
+        "field": "amountIn",
+        "fn": "computeSwapStep",
+        "got": "95",
+        "id": "unit-2382-computeSwapStep"
+      },
+      {
+        "args": [
+          "4295128739",
+          "152587937210428311931710435644075096453408762250",
+          "414810686640195312587846798479",
+          "-97",
+          0
+        ],
+        "expected": "0",
+        "field": "feeAmount",
+        "fn": "computeSwapStep",
+        "got": "2",
+        "id": "unit-2382-computeSwapStep"
+      }
+    ],
+    "per_fn": {
+      "calculateSwapFee": {
+        "unsupported": 300
+      },
+      "computeSwapStep": {
+        "mismatch": 18,
+        "pass": 276,
+        "target_error": 6
+      },
+      "getAmount0Delta": {
+        "pass": 300
+      },
+      "getAmount1Delta": {
+        "pass": 300
+      },
+      "getNextSqrtPriceFromInput": {
+        "pass": 300
+      },
+      "getNextSqrtPriceFromOutput": {
+        "pass": 296,
+        "target_error": 4
+      },
+      "getSqrtPriceAtTick": {
+        "pass": 300
+      },
+      "getTickAtSqrtPrice": {
+        "pass": 300
+      }
+    },
+    "target_errors": [
+      {
+        "args": [
+          "1050967711104805009749695378965554792261800915087",
+          "4295128739",
+          "0",
+          "-66337950033594281900413963085129263013179800080104346365825",
+          1000000
+        ],
+        "expected": [
+          "4295128739",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "DenominatorIsZero",
+        "id": "unit-14-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "1207733185329394882177616004559552908118235642224",
+          "0",
+          "-1",
+          1000000
+        ],
+        "expected": [
+          "1207733185329394882177616004559552908118235642224",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "DenominatorIsZero",
+        "id": "unit-70-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "363155379966371372",
+          false
+        ],
+        "expected": {
+          "revert": "0x93dafdf1"
+        },
+        "fn": "getNextSqrtPriceFromOutput",
+        "got": "1490794411648907416389439085277047349742854008339",
+        "id": "unit-101-getNextSqrtPriceFromOutput"
+      },
+      {
+        "args": [
+          "4295128739",
+          "4295128739",
+          "16993722908495894",
+          "-12962784343751310025",
+          1000000
+        ],
+        "expected": [
+          "4295128739",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "DenominatorIsZero",
+        "id": "unit-1334-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "8741607145428472248117784811296722",
+          "5470704839852",
+          false
+        ],
+        "expected": {
+          "revert": "0x93dafdf1"
+        },
+        "fn": "getNextSqrtPriceFromOutput",
+        "got": "1478514640300333538681868370331700572724685046245",
+        "id": "unit-1405-getNextSqrtPriceFromOutput"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "2442473582421258921933625419975433632",
+          "46682942204551",
+          false
+        ],
+        "expected": {
+          "revert": "0x93dafdf1"
+        },
+        "fn": "getNextSqrtPriceFromOutput",
+        "got": "1461962131317746999895783668439373589223926729372",
+        "id": "unit-1573-getNextSqrtPriceFromOutput"
+      },
+      {
+        "args": [
+          "79228162514264337593543950336",
+          "829808060581537912821086290565798922620923714227",
+          "0",
+          "-3583999846322564",
+          1000000
+        ],
+        "expected": [
+          "829808060581537912821086290565798922620923714227",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "DenominatorIsZero",
+        "id": "unit-1606-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "340282366920938463463374607431768211455",
+          "1770192817429712745",
+          false
+        ],
+        "expected": {
+          "revert": "0x93dafdf1"
+        },
+        "fn": "getNextSqrtPriceFromOutput",
+        "got": "1616570796981587785807654698437469474805286222635",
+        "id": "unit-1701-getNextSqrtPriceFromOutput"
+      },
+      {
+        "args": [
+          "446501730764751141217503387328595472077913923151",
+          "624630135718675683484514094834770793393104790688",
+          "0",
+          "-30878749219678415426577726098738629",
+          1000000
+        ],
+        "expected": [
+          "624630135718675683484514094834770793393104790688",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "DenominatorIsZero",
+        "id": "unit-1982-computeSwapStep"
+      },
+      {
+        "args": [
+          "1461446703485210103287273052203988822378723970341",
+          "79228162514264337593543950336",
+          "0",
+          "-1618264664954657056576506524733108451609",
+          1000000
+        ],
+        "expected": [
+          "79228162514264337593543950336",
+          "0",
+          "0",
+          "0"
+        ],
+        "fn": "computeSwapStep",
+        "got_error": "DenominatorIsZero",
+        "id": "unit-2326-computeSwapStep"
+      }
+    ],
+    "unsupported": [
+      {
+        "id": "unit-7-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-15-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-23-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-31-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-39-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-47-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-55-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-63-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-71-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-79-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-87-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-95-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-103-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-111-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-119-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-127-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-135-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-143-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-151-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-159-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-167-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-175-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-183-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-191-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-199-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-207-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-215-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-223-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-231-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-239-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-247-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-255-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-263-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-271-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-279-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-287-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-295-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-303-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-311-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-319-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-327-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-335-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-343-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-351-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-359-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-367-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-375-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-383-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-391-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-399-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-407-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-415-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-423-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-431-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-439-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-447-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-455-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-463-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-471-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-479-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-487-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-495-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-503-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-511-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-519-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-527-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-535-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-543-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-551-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-559-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-567-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-575-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-583-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-591-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-599-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-607-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-615-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-623-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-631-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-639-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-647-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-655-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-663-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-671-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-679-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-687-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-695-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-703-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-711-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-719-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-727-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-735-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-743-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-751-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-759-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-767-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-775-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-783-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-791-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-799-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-807-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-815-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-823-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-831-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-839-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-847-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-855-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-863-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-871-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-879-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-887-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-895-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-903-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-911-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-919-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-927-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-935-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-943-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-951-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-959-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-967-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-975-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-983-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-991-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-999-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1007-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1015-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1023-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1031-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1039-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1047-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1055-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1063-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1071-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1079-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1087-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1095-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1103-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1111-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1119-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1127-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1135-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1143-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1151-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1159-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1167-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1175-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1183-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1191-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1199-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1207-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1215-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1223-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1231-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1239-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1247-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1255-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1263-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1271-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1279-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1287-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1295-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1303-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1311-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1319-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1327-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1335-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1343-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1351-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1359-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1367-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1375-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1383-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1391-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1399-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1407-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1415-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1423-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1431-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1439-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1447-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1455-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1463-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1471-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1479-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1487-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1495-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1503-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1511-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1519-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1527-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1535-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1543-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1551-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1559-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1567-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1575-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1583-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1591-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1599-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1607-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1615-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1623-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1631-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1639-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1647-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1655-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1663-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1671-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1679-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1687-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1695-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1703-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1711-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1719-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1727-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1735-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1743-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1751-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1759-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1767-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1775-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1783-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1791-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1799-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1807-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1815-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1823-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1831-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1839-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1847-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1855-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1863-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1871-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1879-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1887-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1895-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1903-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1911-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1919-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1927-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1935-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1943-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1951-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1959-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1967-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1975-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1983-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1991-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-1999-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2007-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2015-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2023-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2031-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2039-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2047-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2055-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2063-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2071-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2079-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2087-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2095-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2103-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2111-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2119-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2127-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2135-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2143-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2151-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2159-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2167-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2175-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2183-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2191-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2199-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2207-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2215-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2223-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2231-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2239-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2247-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2255-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2263-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2271-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2279-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2287-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2295-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2303-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2311-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2319-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2327-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2335-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2343-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2351-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2359-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2367-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2375-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2383-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2391-calculateSwapFee",
+        "reason": "no such function in target"
+      },
+      {
+        "id": "unit-2399-calculateSwapFee",
+        "reason": "no such function in target"
+      }
+    ]
+  }
+}

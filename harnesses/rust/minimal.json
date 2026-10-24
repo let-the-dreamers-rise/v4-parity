@@ -1,0 +1,215 @@
+{
+ "generator": "make_minimal.py (rust harness)",
+ "vectors": [
+  {
+   "id": "min-pf-3000-1000-exactIn",
+   "note": "0.30% pool, protocol fee 1000 pips (0.10%) both directions, exact-in 1e18 token0",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 1000,
+    "protocolFeeOneForZero": 1000,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -887220,
+      "tickUpper": 887220,
+      "liquidity": "1000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": true,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "4295128740",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "-1000000000000000000",
+    "amount1": "995011965097726768",
+    "amountToProtocol": "1000000000000000",
+    "swapFee": 3997,
+    "sqrtPriceX96": "79149329544589937382141525231",
+    "tick": -20,
+    "liquidity": "1000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf0-control",
+   "note": "same, protocol fee off",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 0,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -887220,
+      "tickUpper": 887220,
+      "liquidity": "1000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": true,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "4295128740",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "-1000000000000000000",
+    "amount1": "996006981039903216",
+    "amountToProtocol": "0",
+    "swapFee": 3000,
+    "sqrtPriceX96": "79149250711305166342700278159",
+    "tick": -20,
+    "liquidity": "1000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf-500-500-exactOut",
+   "note": "0.05% pool, protocol fee 500 pips, exact-out 1e18 token0",
+   "pool": {
+    "tickSpacing": 10,
+    "lpFee": 500,
+    "protocolFeeZeroForOne": 500,
+    "protocolFeeOneForZero": 500,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -887270,
+      "tickUpper": 887270,
+      "liquidity": "1000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": false,
+    "amountSpecified": "1000000000000000000",
+    "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "1000000000000000000",
+    "amount1": "-1002003004005006009",
+    "amountToProtocol": "501001502002503",
+    "swapFee": 1000,
+    "sqrtPriceX96": "79307469984248586179723674011",
+    "tick": 20,
+    "liquidity": "1000000000000000000000"
+   }
+  },
+  {
+   "id": "min-pf-100-50-exactIn",
+   "note": "0.01% pool, protocol fee 50 pips, exact-in token1",
+   "pool": {
+    "tickSpacing": 1,
+    "lpFee": 100,
+    "protocolFeeZeroForOne": 50,
+    "protocolFeeOneForZero": 50,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -887272,
+      "tickUpper": 887272,
+      "liquidity": "1000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": false,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "998851298529165613",
+    "amount1": "-1000000000000000000",
+    "amountToProtocol": "50000000000000",
+    "swapFee": 150,
+    "sqrtPriceX96": "79307378792554224791486855254",
+    "tick": 19,
+    "liquidity": "1000000000000000000000"
+   }
+  },
+  {
+   "id": "chain-truth-oneForZero-from-tick0",
+   "note": "ground truth for the 2nd swap of the chained-quote probe",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 3000,
+    "protocolFeeZeroForOne": 0,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000",
+    "positions": [
+     {
+      "tickLower": 0,
+      "tickUpper": 600,
+      "liquidity": "1000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": false,
+    "amountSpecified": "-1000000000000000",
+    "sqrtPriceLimitX96": "1461446703485210103287273052203988822378723970341",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "996006981039903",
+    "amount1": "-1000000000000000",
+    "amountToProtocol": "0",
+    "swapFee": 3000,
+    "sqrtPriceX96": "79307152992291059138124713654",
+    "tick": 19,
+    "liquidity": "1000000000000000000"
+   }
+  },
+  {
+   "id": "lpfee-1e6-exactIn",
+   "note": "static 100% LP fee pool",
+   "pool": {
+    "tickSpacing": 60,
+    "lpFee": 1000000,
+    "protocolFeeZeroForOne": 0,
+    "protocolFeeOneForZero": 0,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": 0,
+    "liquidity": "1000000000000000000000",
+    "positions": [
+     {
+      "tickLower": -887220,
+      "tickUpper": 887220,
+      "liquidity": "1000000000000000000000"
+     }
+    ]
+   },
+   "swap": {
+    "zeroForOne": true,
+    "amountSpecified": "-1000000000000000000",
+    "sqrtPriceLimitX96": "4295128740",
+    "lpFeeOverride": 0
+   },
+   "expect": {
+    "amount0": "-1000000000000000000",
+    "amount1": "0",
+    "amountToProtocol": "0",
+    "swapFee": 1000000,
+    "sqrtPriceX96": "79228162514264337593543950336",
+    "tick": -1,
+    "liquidity": "1000000000000000000000"
+   }
+  }
+ ]
+}

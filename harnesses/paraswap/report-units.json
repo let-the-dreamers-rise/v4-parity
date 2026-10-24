@@ -1,0 +1,194 @@
+{
+ "target": "paraswap-dex-lib@291393f0f489b9fe9b0e2ddc3313724f4dbb5cd2 (npm @paraswap/dex-lib 5.1.28) src/dex/uniswap-v4",
+ "vectors": "../../v4-parity/vectors/units.json",
+ "n": 2400,
+ "kind": "units",
+ "counts": {
+  "PASS": 2378,
+  "MISMATCH": 1,
+  "TARGET_ERROR": 21,
+  "UNSUPPORTED": 0
+ },
+ "perFn": {
+  "getSqrtPriceAtTick": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0
+  },
+  "getTickAtSqrtPrice": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0
+  },
+  "getAmount0Delta": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0
+  },
+  "getAmount1Delta": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0
+  },
+  "getNextSqrtPriceFromInput": {
+   "PASS": 282,
+   "MISMATCH": 1,
+   "TARGET_ERROR": 17
+  },
+  "getNextSqrtPriceFromOutput": {
+   "PASS": 296,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 4
+  },
+  "computeSwapStep": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0
+  },
+  "calculateSwapFee": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0
+  }
+ },
+ "mismatches": [
+  {
+   "id": "getNextSqrtPriceFromInput([\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"331211983692565189031230575677358\",true])",
+   "fields": [
+    {
+     "field": "result",
+     "expected": "81397859964431944902583141489731927",
+     "got": "81397859964431944902583141489731682"
+    }
+   ]
+  }
+ ],
+ "targetErrors": [
+  {
+   "id": "getNextSqrtPriceFromInput([\"1461446703485210103287273052203988822378723970341\",\"1\",\"1495598048148212414883\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "119954931918188322857186516985880042739872703221029"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput([\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"363155379966371372\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "1490794411648907416389439085277047349742854008339"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"1461446703485210103287273052203988822378723970341\",\"1\",\"943511954269499734298656046271941950371854284362226353452357666\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "unknown",
+   "got": "74752718447015066781965290323445677979865481873739417647139415322889420564262825029136846117"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"4295128739\",\"29782390096\",\"1452254524451861631644629272191729\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "3863338607293345473208417683372316756930908938382876"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"1461446703485210103287273052203988822378723970341\",\"235856428271\",\"44139483279817687086986177926100856747684314446717381387015237094068269\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "unknown",
+   "got": "14827198818473068259151279525929078049298258360171324835876253463784712949673917367084225"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"4295128739\",\"1742206\",\"33788846837798171972543142079417865917132089252910834524972620948472031873\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "unknown",
+   "got": "1536573888756358449824243913368341943953920364503565574956173592705752568667626870881432841530783"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"4295128739\",\"10830\",\"72878875222775061018814952574\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "533154143121589576635412341763707003934018952601356935"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"1359702046046013372793358192500769734655349652597\",\"1\",\"3361107707251166541460788663354\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "266294387659401528131957494228316247760229007325833748839541"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"79228162514264337593543950336\",\"11837\",\"59845589369721576219711916691454684\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "400562311425718620490477749672873320064289472392392597400583"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"1081437379109081188436164031502603448472211182064\",\"1\",\"16538684658908484734398466911577500759762310615191067270111\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "unknown",
+   "got": "1310329595928171882493527980442093349012311712029842980294347726947108373777070692389360"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput([\"1461446703485210103287273052203988822378723970341\",\"8741607145428472248117784811296722\",\"5470704839852\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "1478514640300333538681868370331700572724685046245"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput([\"1461446703485210103287273052203988822378723970341\",\"2442473582421258921933625419975433632\",\"46682942204551\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "1461962131317746999895783668439373589223926729372"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput([\"1461446703485210103287273052203988822378723970341\",\"340282366920938463463374607431768211455\",\"1770192817429712745\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "1616570796981587785807654698437469474805286222635"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"79228162514264337593543950336\",\"7632404954942569\",\"1681678294855828087375801802986805065258794174865744207945273553558816607426\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "unknown",
+   "got": "17456657767518972270317578096420443276957982091569129287797899531858222880234402317966601"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"1461446703485210103287273052203988822378723970341\",\"522430\",\"450106215890461798800\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "1461514963517025370512761218711720236247611768561"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"1461446703485210103287273052203988822378723970341\",\"1\",\"1146936222833491099\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "1552316352941358432001909708110666255441078029605"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"4295128739\",\"116\",\"71006311503916085102387546898679\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "48497410235954663581206829225077246607126083812740495128791"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"1189269473409155203058233203403150702736269808948\",\"13805969039449018190\",\"28123310974795841599104045317567434640522297\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "161392124305152890443851068650893213061449531851299284"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"79228162514264337593543950336\",\"1\",\"558845848695888246249\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "44276329720899812904283748747681049849616138240000"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"79228162514264337593543950336\",\"1\",\"63829822045396144886153359\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "5057119514269218274105067041226245518475190281919528960"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput([\"4295128739\",\"23\",\"1949428701020078740724037901811284\",false])",
+   "kind": "v4 reverted, target returned",
+   "v4revert": "0x93dafdf1",
+   "got": "6715202344973479275598856589866146188738123410989847553406627"
+  }
+ ]
+}

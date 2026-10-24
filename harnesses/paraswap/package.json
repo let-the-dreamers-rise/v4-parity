@@ -1,0 +1,1 @@
+{ "name": "paraswap-v4-harness", "private": true, "dependencies": { "@paraswap/core": "2.4.4", "ethers": "5.7.2", "tsx": "4.19.2" } }

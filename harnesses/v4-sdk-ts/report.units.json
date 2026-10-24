@@ -1,0 +1,1025 @@
+{
+ "target": "uniswap-v4-sdk-ts (v3-sdk primitives)",
+ "versions": {
+  "@uniswap/v4-sdk": "2.4.1",
+  "@uniswap/v3-sdk": "3.31.5",
+  "@uniswap/sdk-core": "7.19.4",
+  "jsbi": "3.2.5"
+ },
+ "file": "../../v4-parity/vectors/units.json",
+ "kind": "units",
+ "counts": {
+  "PASS": 2055,
+  "MISMATCH": 18,
+  "TARGET_ERROR": 27,
+  "UNSUPPORTED": 300
+ },
+ "byFn": {
+  "getSqrtPriceAtTick": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0,
+   "UNSUPPORTED": 0
+  },
+  "getTickAtSqrtPrice": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0,
+   "UNSUPPORTED": 0
+  },
+  "getAmount0Delta": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0,
+   "UNSUPPORTED": 0
+  },
+  "getAmount1Delta": {
+   "PASS": 300,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0,
+   "UNSUPPORTED": 0
+  },
+  "getNextSqrtPriceFromInput": {
+   "PASS": 283,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 17,
+   "UNSUPPORTED": 0
+  },
+  "getNextSqrtPriceFromOutput": {
+   "PASS": 296,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 4,
+   "UNSUPPORTED": 0
+  },
+  "computeSwapStep": {
+   "PASS": 276,
+   "MISMATCH": 18,
+   "TARGET_ERROR": 6,
+   "UNSUPPORTED": 0
+  },
+  "calculateSwapFee": {
+   "PASS": 0,
+   "MISMATCH": 0,
+   "TARGET_ERROR": 0,
+   "UNSUPPORTED": 300
+  }
+ },
+ "errors": [
+  {
+   "id": "computeSwapStep#14",
+   "fn": "computeSwapStep",
+   "args": [
+    "1050967711104805009749695378965554792261800915087",
+    "4295128739",
+    "0",
+    "-66337950033594281900413963085129263013179800080104346365825",
+    1000000
+   ],
+   "kind": "target threw, v4 succeeded",
+   "expected": [
+    "4295128739",
+    "0",
+    "0",
+    "0"
+   ],
+   "got": "Division by zero"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#20",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "1",
+    "1495598048148212414883",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "119954931918188322857186516985880042739872703221029",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "computeSwapStep#70",
+   "fn": "computeSwapStep",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "1207733185329394882177616004559552908118235642224",
+    "0",
+    "-1",
+    1000000
+   ],
+   "kind": "target threw, v4 succeeded",
+   "expected": [
+    "1207733185329394882177616004559552908118235642224",
+    "0",
+    "0",
+    "0"
+   ],
+   "got": "Division by zero"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput#101",
+   "fn": "getNextSqrtPriceFromOutput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "363155379966371372",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "1490794411648907416389439085277047349742854008339",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#180",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "1",
+    "943511954269499734298656046271941950371854284362226353452357666",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "unknown"
+   },
+   "got": "74752718447015066781965290323445677979865481873739417647139415322889420564262825029136846117",
+   "resultRange": "result>uint256"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#356",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "4295128739",
+    "29782390096",
+    "1452254524451861631644629272191729",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "3863338607293345473208417683372316756930908938382876",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#460",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "235856428271",
+    "44139483279817687086986177926100856747684314446717381387015237094068269",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "unknown"
+   },
+   "got": "14827198818473068259151279525929078049298258360171324835876253463784712949673917367084225",
+   "resultRange": "result>uint256"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#852",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "4295128739",
+    "1742206",
+    "33788846837798171972543142079417865917132089252910834524972620948472031873",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "unknown"
+   },
+   "got": "1536573888756358449824243913368341943953920364503565574956173592705752568667626870881432841530783",
+   "resultRange": "result>uint256"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#884",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "4295128739",
+    "10830",
+    "72878875222775061018814952574",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "533154143121589576635412341763707003934018952601356935",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1108",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1359702046046013372793358192500769734655349652597",
+    "1",
+    "3361107707251166541460788663354",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "266294387659401528131957494228316247760229007325833748839541",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1140",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "79228162514264337593543950336",
+    "11837",
+    "59845589369721576219711916691454684",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "400562311425718620490477749672873320064289472392392597400583",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1156",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1081437379109081188436164031502603448472211182064",
+    "1",
+    "16538684658908484734398466911577500759762310615191067270111",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "unknown"
+   },
+   "got": "1310329595928171882493527980442093349012311712029842980294347726947108373777070692389360",
+   "resultRange": "result>uint256"
+  },
+  {
+   "id": "computeSwapStep#1334",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "4295128739",
+    "16993722908495894",
+    "-12962784343751310025",
+    1000000
+   ],
+   "kind": "target threw, v4 succeeded",
+   "expected": [
+    "4295128739",
+    "0",
+    "0",
+    "0"
+   ],
+   "got": "Division by zero"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput#1405",
+   "fn": "getNextSqrtPriceFromOutput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "8741607145428472248117784811296722",
+    "5470704839852",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "1478514640300333538681868370331700572724685046245",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput#1573",
+   "fn": "getNextSqrtPriceFromOutput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "2442473582421258921933625419975433632",
+    "46682942204551",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "1461962131317746999895783668439373589223926729372",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "computeSwapStep#1606",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "829808060581537912821086290565798922620923714227",
+    "0",
+    "-3583999846322564",
+    1000000
+   ],
+   "kind": "target threw, v4 succeeded",
+   "expected": [
+    "829808060581537912821086290565798922620923714227",
+    "0",
+    "0",
+    "0"
+   ],
+   "got": "Division by zero"
+  },
+  {
+   "id": "getNextSqrtPriceFromOutput#1701",
+   "fn": "getNextSqrtPriceFromOutput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "1770192817429712745",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "1616570796981587785807654698437469474805286222635",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1708",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "79228162514264337593543950336",
+    "7632404954942569",
+    "1681678294855828087375801802986805065258794174865744207945273553558816607426",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "unknown"
+   },
+   "got": "17456657767518972270317578096420443276957982091569129287797899531858222880234402317966601",
+   "resultRange": "result>uint256"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1724",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "522430",
+    "450106215890461798800",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "1461514963517025370512761218711720236247611768561",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1804",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "1",
+    "1146936222833491099",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "1552316352941358432001909708110666255441078029605",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1932",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "4295128739",
+    "116",
+    "71006311503916085102387546898679",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "48497410235954663581206829225077246607126083812740495128791",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1964",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "1189269473409155203058233203403150702736269808948",
+    "13805969039449018190",
+    "28123310974795841599104045317567434640522297",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "161392124305152890443851068650893213061449531851299284",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#1980",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "79228162514264337593543950336",
+    "1",
+    "558845848695888246249",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "44276329720899812904283748747681049849616138240000",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "computeSwapStep#1982",
+   "fn": "computeSwapStep",
+   "args": [
+    "446501730764751141217503387328595472077913923151",
+    "624630135718675683484514094834770793393104790688",
+    "0",
+    "-30878749219678415426577726098738629",
+    1000000
+   ],
+   "kind": "target threw, v4 succeeded",
+   "expected": [
+    "624630135718675683484514094834770793393104790688",
+    "0",
+    "0",
+    "0"
+   ],
+   "got": "Division by zero"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#2036",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "79228162514264337593543950336",
+    "1",
+    "63829822045396144886153359",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "5057119514269218274105067041226245518475190281919528960",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "getNextSqrtPriceFromInput#2212",
+   "fn": "getNextSqrtPriceFromInput",
+   "args": [
+    "4295128739",
+    "23",
+    "1949428701020078740724037901811284",
+    false
+   ],
+   "kind": "v4 reverted, target returned",
+   "expected": {
+    "revert": "0x93dafdf1"
+   },
+   "got": "6715202344973479275598856589866146188738123410989847553406627",
+   "resultRange": "result>uint160"
+  },
+  {
+   "id": "computeSwapStep#2326",
+   "fn": "computeSwapStep",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "79228162514264337593543950336",
+    "0",
+    "-1618264664954657056576506524733108451609",
+    1000000
+   ],
+   "kind": "target threw, v4 succeeded",
+   "expected": [
+    "79228162514264337593543950336",
+    "0",
+    "0",
+    "0"
+   ],
+   "got": "Division by zero"
+  }
+ ],
+ "mismatches": [
+  {
+   "id": "computeSwapStep#246",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "-12932728968003959683272866256862048356410004622212220",
+    3000
+   ],
+   "field": "amountIn",
+   "expected": "12893930781099947804223047658091462211340774608345583",
+   "got": "12893930781099947804223047658091462211340773079850333"
+  },
+  {
+   "id": "computeSwapStep#246",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "-12932728968003959683272866256862048356410004622212220",
+    3000
+   ],
+   "field": "feeAmount",
+   "expected": "38798186904011879049818598770586145069230013866637",
+   "got": "38798186904011879049818598770586145069231542361887"
+  },
+  {
+   "id": "computeSwapStep#302",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "1252189990964836246368918173638",
+    "-4014109",
+    806739
+   ],
+   "field": "amountIn",
+   "expected": "775770",
+   "got": "775766"
+  },
+  {
+   "id": "computeSwapStep#302",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "1252189990964836246368918173638",
+    "-4014109",
+    806739
+   ],
+   "field": "feeAmount",
+   "expected": "3238339",
+   "got": "3238343"
+  },
+  {
+   "id": "computeSwapStep#390",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "456348550219038102061637959437283748683673396744",
+    "1089435264150789856988515121233102",
+    "-11",
+    500
+   ],
+   "field": "amountIn",
+   "expected": "10",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#390",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "456348550219038102061637959437283748683673396744",
+    "1089435264150789856988515121233102",
+    "-11",
+    500
+   ],
+   "field": "feeAmount",
+   "expected": "1",
+   "got": "11"
+  },
+  {
+   "id": "computeSwapStep#630",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "337927906081466679042124677538816106473170852530",
+    "340282366920938463463374607431768211455",
+    "-1",
+    0
+   ],
+   "field": "amountIn",
+   "expected": "1",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#630",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "337927906081466679042124677538816106473170852530",
+    "340282366920938463463374607431768211455",
+    "-1",
+    0
+   ],
+   "field": "feeAmount",
+   "expected": "0",
+   "got": "1"
+  },
+  {
+   "id": "computeSwapStep#694",
+   "fn": "computeSwapStep",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "4295128739",
+    "24921524",
+    "-1559359286272588114154366992",
+    726687
+   ],
+   "field": "amountIn",
+   "expected": "426193164609019875243872505",
+   "got": "426193164570634200232194511"
+  },
+  {
+   "id": "computeSwapStep#694",
+   "fn": "computeSwapStep",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "4295128739",
+    "24921524",
+    "-1559359286272588114154366992",
+    726687
+   ],
+   "field": "feeAmount",
+   "expected": "1133166121663568238910494487",
+   "got": "1133166121701953913922172481"
+  },
+  {
+   "id": "computeSwapStep#718",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "242723929583028517793308965549995628800",
+    "-16263171755644596",
+    0
+   ],
+   "field": "amountIn",
+   "expected": "16263171755644596",
+   "got": "16263171490051552"
+  },
+  {
+   "id": "computeSwapStep#718",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "242723929583028517793308965549995628800",
+    "-16263171755644596",
+    0
+   ],
+   "field": "feeAmount",
+   "expected": "0",
+   "got": "265593044"
+  },
+  {
+   "id": "computeSwapStep#774",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "340282366920938463463374607431768211455",
+    "-4624",
+    86639
+   ],
+   "field": "amountIn",
+   "expected": "4223",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#774",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "340282366920938463463374607431768211455",
+    "-4624",
+    86639
+   ],
+   "field": "feeAmount",
+   "expected": "401",
+   "got": "4624"
+  },
+  {
+   "id": "computeSwapStep#782",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "5822037301828052415338325782802928",
+    "-30014",
+    375898
+   ],
+   "field": "amountIn",
+   "expected": "18731",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#782",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "5822037301828052415338325782802928",
+    "-30014",
+    375898
+   ],
+   "field": "feeAmount",
+   "expected": "11283",
+   "got": "30014"
+  },
+  {
+   "id": "computeSwapStep#918",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "1461446703485210103287273052203988822378723970341",
+    "13998865295374927173659293708841",
+    "-13355853739201777881912303558",
+    626893
+   ],
+   "field": "amountIn",
+   "expected": "4983162521072357740186653843",
+   "got": "4983162521072357740186653773"
+  },
+  {
+   "id": "computeSwapStep#918",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "1461446703485210103287273052203988822378723970341",
+    "13998865295374927173659293708841",
+    "-13355853739201777881912303558",
+    626893
+   ],
+   "field": "feeAmount",
+   "expected": "8372691218129420141725649715",
+   "got": "8372691218129420141725649785"
+  },
+  {
+   "id": "computeSwapStep#998",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "1422645654443603942174861771521976184184446477830",
+    "340282366920938463463374607431768211455",
+    "-34286626316882737432122246",
+    0
+   ],
+   "field": "amountIn",
+   "expected": "34286626316882737432122246",
+   "got": "34286626316882736838606848"
+  },
+  {
+   "id": "computeSwapStep#998",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "1422645654443603942174861771521976184184446477830",
+    "340282366920938463463374607431768211455",
+    "-34286626316882737432122246",
+    0
+   ],
+   "field": "feeAmount",
+   "expected": "0",
+   "got": "593515398"
+  },
+  {
+   "id": "computeSwapStep#1630",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "552944345627233341471814795818820197135912329801",
+    "340282366920938463463374607431768211455",
+    "-41539159225422",
+    100
+   ],
+   "field": "amountIn",
+   "expected": "41535005309499",
+   "got": "41532333752320"
+  },
+  {
+   "id": "computeSwapStep#1630",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "552944345627233341471814795818820197135912329801",
+    "340282366920938463463374607431768211455",
+    "-41539159225422",
+    100
+   ],
+   "field": "feeAmount",
+   "expected": "4153915923",
+   "got": "6825473102"
+  },
+  {
+   "id": "computeSwapStep#1638",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "340282366920938463463374607431768211455",
+    "-6635153619587647040",
+    999999
+   ],
+   "field": "amountIn",
+   "expected": "6635153619587",
+   "got": "6631429505025"
+  },
+  {
+   "id": "computeSwapStep#1638",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "340282366920938463463374607431768211455",
+    "-6635153619587647040",
+    999999
+   ],
+   "field": "feeAmount",
+   "expected": "6635146984434027453",
+   "got": "6635146988158142015"
+  },
+  {
+   "id": "computeSwapStep#1742",
+   "fn": "computeSwapStep",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "4295128739",
+    "1",
+    "-4143580553371295",
+    0
+   ],
+   "field": "amountIn",
+   "expected": "4143580553371295",
+   "got": "4143580553371261"
+  },
+  {
+   "id": "computeSwapStep#1742",
+   "fn": "computeSwapStep",
+   "args": [
+    "1461446703485210103287273052203988822378723970341",
+    "4295128739",
+    "1",
+    "-4143580553371295",
+    0
+   ],
+   "field": "feeAmount",
+   "expected": "0",
+   "got": "34"
+  },
+  {
+   "id": "computeSwapStep#2030",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "-203242770",
+    100
+   ],
+   "field": "amountIn",
+   "expected": "203222445",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#2030",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "-203242770",
+    100
+   ],
+   "field": "feeAmount",
+   "expected": "20325",
+   "got": "203242770"
+  },
+  {
+   "id": "computeSwapStep#2190",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "-29742849",
+    3000
+   ],
+   "field": "amountIn",
+   "expected": "29653620",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#2190",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "1461446703485210103287273052203988822378723970341",
+    "340282366920938463463374607431768211455",
+    "-29742849",
+    3000
+   ],
+   "field": "feeAmount",
+   "expected": "89229",
+   "got": "29742849"
+  },
+  {
+   "id": "computeSwapStep#2214",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "79228162514264337593543950336",
+    "340282366920938463463374607431768211455",
+    "-1368883",
+    77664
+   ],
+   "field": "amountIn",
+   "expected": "1262570",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#2214",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "79228162514264337593543950336",
+    "340282366920938463463374607431768211455",
+    "-1368883",
+    77664
+   ],
+   "field": "feeAmount",
+   "expected": "106313",
+   "got": "1368883"
+  },
+  {
+   "id": "computeSwapStep#2238",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "340282366920938463463374607431768211455",
+    "-78",
+    100
+   ],
+   "field": "amountIn",
+   "expected": "77",
+   "got": "0"
+  },
+  {
+   "id": "computeSwapStep#2238",
+   "fn": "computeSwapStep",
+   "args": [
+    "79228162514264337593543950336",
+    "4295128739",
+    "340282366920938463463374607431768211455",
+    "-78",
+    100
+   ],
+   "field": "feeAmount",
+   "expected": "1",
+   "got": "78"
+  },
+  {
+   "id": "computeSwapStep#2382",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "152587937210428311931710435644075096453408762250",
+    "414810686640195312587846798479",
+    "-97",
+    0
+   ],
+   "field": "amountIn",
+   "expected": "97",
+   "got": "95"
+  },
+  {
+   "id": "computeSwapStep#2382",
+   "fn": "computeSwapStep",
+   "args": [
+    "4295128739",
+    "152587937210428311931710435644075096453408762250",
+    "414810686640195312587846798479",
+    "-97",
+    0
+   ],
+   "field": "feeAmount",
+   "expected": "0",
+   "got": "2"
+  }
+ ]
+}

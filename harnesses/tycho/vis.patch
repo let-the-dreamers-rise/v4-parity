@@ -1,0 +1,162 @@
+diff -ruN -x target -x .git tycho-simulation/src/evm/protocol/uniswap_v4/state.rs harness/tycho-simulation-vis/src/evm/protocol/uniswap_v4/state.rs
+--- a/src/evm/protocol/uniswap_v4/state.rs	2026-10-20 13:36:23.108331075 +0000
++++ b/src/evm/protocol/uniswap_v4/state.rs	2026-10-20 13:42:02.462724906 +0000
+@@ -2413,3 +2413,26 @@
+         assert!(matches!(result, Err(SimulationError::InvalidInput(_, None))));
+     }
+ }
++
++// ---- v4-parity harness additions (visibility only; no logic change) ----
++impl UniswapV4State {
++    /// Calls the private `swap` unchanged. Returns
++    /// (amount_calculated, amount_remaining, sqrt_price, liquidity, tick).
++    pub fn parity_swap(
++        &self,
++        zero_for_one: bool,
++        amount_specified: I256,
++        sqrt_price_limit: Option<U256>,
++        lp_fee_override: Option<u32>,
++    ) -> Result<(I256, I256, U256, u128, i32), SimulationError> {
++        let r = self.swap(zero_for_one, amount_specified, sqrt_price_limit, lp_fee_override)?;
++        Ok((r.amount_calculated, r.amount_remaining, r.sqrt_price, r.liquidity, r.tick))
++    }
++    pub fn parity_fee_pips(&self, zero_for_one: bool, lp_fee_override: Option<u32>) -> u32 {
++        self.fees.calculate_swap_fees_pips(zero_for_one, lp_fee_override)
++    }
++    /// (sqrt_price, liquidity, tick)
++    pub fn parity_state(&self) -> (U256, u128, i32) {
++        (self.sqrt_price, self.liquidity, self.tick)
++    }
++}
+diff -ruN -x target -x .git tycho-simulation/src/evm/protocol/utils/uniswap/liquidity_math.rs harness/tycho-simulation-vis/src/evm/protocol/utils/uniswap/liquidity_math.rs
+--- a/src/evm/protocol/utils/uniswap/liquidity_math.rs	2026-10-20 13:36:23.111153860 +0000
++++ b/src/evm/protocol/utils/uniswap/liquidity_math.rs	2026-10-20 13:42:02.455168772 +0000
+@@ -1,7 +1,7 @@
+ use tycho_common::simulation::errors::SimulationError;
+ 
+ // Solidity spec: function addDelta(uint128 x, int128 y) internal pure returns (uint128 z) {
+-pub(crate) fn add_liquidity_delta(x: u128, y: i128) -> Result<u128, SimulationError> {
++pub fn add_liquidity_delta(x: u128, y: i128) -> Result<u128, SimulationError> {
+     if y < 0 {
+         x.checked_sub((-y) as u128)
+             .ok_or_else(|| SimulationError::FatalError("Underflow: Result is negative".to_string()))
+diff -ruN -x target -x .git tycho-simulation/src/evm/protocol/utils/uniswap/mod.rs harness/tycho-simulation-vis/src/evm/protocol/utils/uniswap/mod.rs
+--- a/src/evm/protocol/utils/uniswap/mod.rs	2026-10-20 13:36:23.111452156 +0000
++++ b/src/evm/protocol/utils/uniswap/mod.rs	2026-10-20 13:42:02.436768844 +0000
+@@ -1,12 +1,12 @@
+ use alloy::primitives::{I256, U256};
+ use tycho_common::Bytes;
+ 
+-pub(crate) mod liquidity_math;
+-pub(crate) mod lp_fee;
+-pub(crate) mod sqrt_price_math;
+-pub(crate) mod swap_math;
++pub mod liquidity_math;
++pub mod lp_fee;
++pub mod sqrt_price_math;
++pub mod swap_math;
+ pub mod tick_list;
+-pub(crate) mod tick_math;
++pub mod tick_math;
+ 
+ #[derive(Debug)]
+ pub(crate) struct SwapState {
+diff -ruN -x target -x .git tycho-simulation/src/evm/protocol/utils/uniswap/sqrt_price_math.rs harness/tycho-simulation-vis/src/evm/protocol/utils/uniswap/sqrt_price_math.rs
+--- a/src/evm/protocol/utils/uniswap/sqrt_price_math.rs	2026-10-20 13:36:23.111452156 +0000
++++ b/src/evm/protocol/utils/uniswap/sqrt_price_math.rs	2026-10-20 13:42:02.441554689 +0000
+@@ -35,7 +35,7 @@
+     }
+ }
+ 
+-pub(crate) fn get_amount0_delta(
++pub fn get_amount0_delta(
+     a: U256,
+     b: U256,
+     liquidity: u128,
+@@ -59,7 +59,7 @@
+     }
+ }
+ 
+-pub(crate) fn get_amount1_delta(
++pub fn get_amount1_delta(
+     a: U256,
+     b: U256,
+     liquidity: u128,
+@@ -76,7 +76,7 @@
+     }
+ }
+ 
+-pub(super) fn get_next_sqrt_price_from_input(
++pub fn get_next_sqrt_price_from_input(
+     sqrt_price: U256,
+     liquidity: u128,
+     amount_in: U256,
+@@ -93,7 +93,7 @@
+     }
+ }
+ 
+-pub(super) fn get_next_sqrt_price_from_output(
++pub fn get_next_sqrt_price_from_output(
+     sqrt_price: U256,
+     liquidity: u128,
+     amount_in: U256,
+@@ -183,7 +183,7 @@
+ ///
+ /// # Panics
+ /// Will panic if the `x` is bigger than U160.
+-pub(crate) fn sqrt_price_q96_to_f64(
++pub fn sqrt_price_q96_to_f64(
+     x: U256,
+     token_0_decimals: u32,
+     token_1_decimals: u32,
+@@ -210,7 +210,7 @@
+ ///
+ /// # Returns
+ /// The sqrt price in Q96 format as U256
+-pub(crate) fn get_sqrt_price_q96(price_0: U256, price_1: U256) -> Result<U256, SimulationError> {
++pub fn get_sqrt_price_q96(price_0: U256, price_1: U256) -> Result<U256, SimulationError> {
+     // sqrt(price_0/price_1) * 2^96 = sqrt(price_0 * 2^192 / price_1)
+     // We need to compute this carefully to avoid overflow
+ 
+@@ -229,7 +229,7 @@
+ ///
+ /// # Returns
+ /// The sqrt price limit in Q96 format
+-pub(crate) fn get_sqrt_price_limit(
++pub fn get_sqrt_price_limit(
+     token_in: &Bytes,
+     token_out: &Bytes,
+     target_price: &Price,
+diff -ruN -x target -x .git tycho-simulation/src/evm/protocol/utils/uniswap/swap_math.rs harness/tycho-simulation-vis/src/evm/protocol/utils/uniswap/swap_math.rs
+--- a/src/evm/protocol/utils/uniswap/swap_math.rs	2026-10-20 13:36:23.111452156 +0000
++++ b/src/evm/protocol/utils/uniswap/swap_math.rs	2026-10-20 13:42:02.446339060 +0000
+@@ -7,7 +7,7 @@
+     utils::solidity_math::{mul_div, mul_div_rounding_up},
+ };
+ 
+-pub(crate) fn compute_swap_step(
++pub fn compute_swap_step(
+     sqrt_ratio_current: U256,
+     sqrt_ratio_target: U256,
+     liquidity: u128,
+diff -ruN -x target -x .git tycho-simulation/src/evm/protocol/utils/uniswap/tick_math.rs harness/tycho-simulation-vis/src/evm/protocol/utils/uniswap/tick_math.rs
+--- a/src/evm/protocol/utils/uniswap/tick_math.rs	2026-10-20 13:36:23.111452156 +0000
++++ b/src/evm/protocol/utils/uniswap/tick_math.rs	2026-10-20 13:42:02.450930792 +0000
+@@ -15,7 +15,7 @@
+ pub(crate) const MAX_SQRT_RATIO: U256 =
+     U256::from_limbs([6743328256752651558u64, 17280870778742802505u64, 4294805859u64, 0]);
+ 
+-pub(crate) fn get_sqrt_ratio_at_tick(tick: i32) -> Result<U256, SimulationError> {
++pub fn get_sqrt_ratio_at_tick(tick: i32) -> Result<U256, SimulationError> {
+     if tick.abs() > MAX_TICK {
+         return Err(SimulationError::FatalError(format!(
+             "Tick {} is outside valid range [{}, {}]",
+@@ -161,7 +161,7 @@
+     Ok(x.bit_len() - 1)
+ }
+ 
+-pub(crate) fn get_tick_at_sqrt_ratio(sqrt_price: U256) -> Result<i32, SimulationError> {
++pub fn get_tick_at_sqrt_ratio(sqrt_price: U256) -> Result<i32, SimulationError> {
+     if sqrt_price < MIN_SQRT_RATIO || sqrt_price >= MAX_SQRT_RATIO {
+         return Err(SimulationError::FatalError(format!(
+             "sqrt_price {} is outside valid range [{}, {})",

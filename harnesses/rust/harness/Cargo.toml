@@ -1,0 +1,13 @@
+[package]
+name = "v4parity-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+uniswap-v4-sdk = { version = "=2.0.0", features = ["std"] }
+uniswap-v3-sdk = { version = "=7.0.0", features = ["std"] }
+uniswap-sdk-core = { version = "=7.0.0" }
+uniswap_v3_math = "=0.6.2"
+alloy-primitives = "1"
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
