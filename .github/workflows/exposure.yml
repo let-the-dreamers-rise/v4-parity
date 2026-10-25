@@ -1,6 +1,8 @@
 name: exposure
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
   push:
     branches: [main]
     paths: [scripts/exposure.mjs, .github/workflows/exposure.yml]
@@ -8,6 +10,9 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    # A data scan, not a test: a chain whose free public RPCs refuse old logs is reported in the
+    # summary instead of failing the run. Add an RPC_<CHAIN> repository secret to scan it fully.
+    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
@@ -17,9 +22,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/exposure.mjs ${{ matrix.chain }}
+      - run: node scripts/exposure.mjs ${{ matrix.chain }} 2> scan.log
+        env:
+          RPC_ETHEREUM: ${{ secrets.RPC_ETHEREUM }}
+          RPC_BASE: ${{ secrets.RPC_BASE }}
+          RPC_ARBITRUM: ${{ secrets.RPC_ARBITRUM }}
+          RPC_OPTIMISM: ${{ secrets.RPC_OPTIMISM }}
+          RPC_POLYGON: ${{ secrets.RPC_POLYGON }}
+          RPC_BNB: ${{ secrets.RPC_BNB }}
       - if: always()
-        run: cat exposure/SUMMARY.md >> "$GITHUB_STEP_SUMMARY"; cat exposure/*.json || true
+        run: grep -v '%$' scan.log | tail -20 || true; cat exposure/SUMMARY.md | tee -a "$GITHUB_STEP_SUMMARY" || true
       - if: always()
         uses: actions/upload-artifact@v4
         with:

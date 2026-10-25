@@ -48,6 +48,7 @@ node gen/codegen-manager-test.mjs vectors/swaps.json 100000 && forge test
 event on the six PoolManagers since Proposal 100, then reports which pools are fee-on now, the fee values
 per direction, and how many of the last 24h of v4 swaps hit those pools. Output: `exposure/<chain>.json`
 and `exposure/SUMMARY.md`. Free public RPCs are the default; set `RPC_<CHAIN>` to use your own.
+Latest results: [EXPOSURE.md](EXPOSURE.md).
 
 ## Vector format
 

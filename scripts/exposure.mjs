@@ -92,7 +92,8 @@ export function decodeProtocolFee(log) {
 }
 
 async function scan(name, { pm, rpcs }) {
-  const list = process.env[`RPC_${name.toUpperCase()}`] ? [process.env[`RPC_${name.toUpperCase()}`]] : rpcs;
+  const own = process.env[`RPC_${name.toUpperCase()}`];
+  const list = own ? [own, ...rpcs] : rpcs;
   const errors = [];
   for (const url of list) {
     try {
@@ -146,7 +147,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
       const r = await scan(c, CHAINS[c]);
       writeFileSync(`exposure/${c}.json`, JSON.stringify(r, null, 1));
       rows.push(r);
-      console.log(JSON.stringify(r));
+      console.log(JSON.stringify({ ...r, feeValues: `${Object.keys(r.feeValues).length} distinct values, see exposure/${c}.json` }));
     } catch (e) {
       console.error(`${c}: FAILED ${e.message}`);
       rows.push({ chain: c, error: e.message });

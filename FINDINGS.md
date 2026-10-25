@@ -29,7 +29,7 @@ Proposal 100 sets one protocol fee per static pool by LP tier, e.g. 1 bp LP fee 
 |---|---|---|
 | Uniswap TS SDK, Rust SDK | exact-in output overquoted by +5.0 bps (+1.25 bps on 5 bp pools, +10 bps on 100 bp pools) | Permanent, on every fee-on pool |
 | ParaSwap | After `ProtocolFeeUpdated`, `lpFee` becomes 2,048,500 (packed 500/500, which is over 100%). Exact-in is overquoted by **+522 bps** and exact-out throws. Output is in `harnesses/paraswap/report-live-schedule.txt`, from `harness/live_schedule.ts`; expected values come from the v4-core Oracle | From each fee activation until the next Swap event fails replay and forces a re-fetch (verified). Persists if a fee is ever set on one direction only, or switched off |
-| KyberSwap | Direction bug dormant while fees are symmetric. Hook-override bug drops the protocol fee on dynamic-fee hook pools in a fee family (+5 bps per 5 bps of fee) | Permanent on those pools |
+| KyberSwap | Direction bug dormant: every live fee is symmetric (EXPOSURE.md). Hook-override bug drops the protocol fee on dynamic-fee hook pools in a fee family (+5 bps per 5 bps of fee) | Permanent on those pools |
 | Tycho | none for protocol fees | n/a |
 
 ## Fixes prepared
@@ -68,7 +68,7 @@ Uniswap's own routing (`smart-order-router`) is not affected: it reads slot0 but
 - The code uses `slot0.protocolFee & 0xfff` (the 0→1 fee) for 1→0 swaps as well. v4 uses `>> 12` for 1→0.
 - Repro: full range at price 1, 30 bps, protocol fee 0 (0→1) / 1000 (1→0), exact-in 1e18 token1. Kyber gives 996999005991991025; v4 gives 996002007979012046, so Kyber overquotes by +10.01 bps.
 - The repo's own dualpool hook does this correctly (`hooks/dualpool/math.go:172-187`).
-- Exposure depends on whether live pools set different fees per direction. Not yet verified on-chain.
+- Live pools all set the same fee in both directions (0 asymmetric of 162,908 fee-on pools on Ethereum, Arbitrum and OP Mainnet; see EXPOSURE.md), so K1 has no effect today.
 
 **K2 (MEDIUM): dynamic-fee override replaces the whole fee.**
 - When a hook reports an LP fee, the simulator uses it as the entire swap fee and drops the protocol fee. v4 adds the protocol fee on top.
@@ -126,7 +126,7 @@ The harness uses a copy of the crate whose only changes widen visibility (`vis.p
 
 ## Not yet verified
 
-- The exact count of fee-on pools, and the volume they carry, per chain. Proposal 100 gives the schedule, but this container has no chain RPC access to read `ProtocolFeeUpdated` events from each PoolManager.
+- Fee-on pool counts for Base, BNB Chain, Polygon and Robinhood Chain. Ethereum, Arbitrum and OP Mainnet are measured in EXPOSURE.md.
 - Whether any live dynamic-fee pool has a hook with no swap flags (U2, R2).
 
 ## Disclosure
