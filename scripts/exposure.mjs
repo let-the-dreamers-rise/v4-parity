@@ -7,25 +7,34 @@ import { mkdirSync, writeFileSync } from "node:fs";
 // PoolManager addresses: verify against https://docs.uniswap.org/contracts/v4/deployments before relying on results.
 const CHAINS = {
   ethereum: { pm: "0x000000000004444c5dc75cB358380D2e3dE08A90", rpcs: ["https://eth.drpc.org", "https://eth.llamarpc.com", "https://1rpc.io/eth", "https://ethereum-rpc.publicnode.com"] },
-  base: { pm: "0x498581fF718922c3f8e6A244956aF099B2652b2b", rpcs: ["https://base.drpc.org", "https://mainnet.base.org", "https://base.llamarpc.com", "https://1rpc.io/base", "https://base-rpc.publicnode.com"] },
+  base: { pm: "0x498581fF718922c3f8e6A244956aF099B2652b2b", rpcs: ["https://mainnet.base.org", "https://base.drpc.org", "https://base-mainnet.public.blastapi.io", "https://base.meowrpc.com", "https://developer-access-mainnet.base.org", "https://base.gateway.tenderly.co", "https://1rpc.io/base", "https://base-rpc.publicnode.com"] },
   arbitrum: { pm: "0x360E68faCcca8cA495c1B759Fd9EEe466db9FB32", rpcs: ["https://arb1.arbitrum.io/rpc", "https://arbitrum.drpc.org", "https://1rpc.io/arb", "https://arbitrum-one-rpc.publicnode.com"] },
   optimism: { pm: "0x9a13F98Cb987694C9F086b1F5eB990EeA8264Ec3", rpcs: ["https://mainnet.optimism.io", "https://optimism.drpc.org", "https://1rpc.io/op", "https://optimism-rpc.publicnode.com"] },
   polygon: { pm: "0x67366782805870060151383F4BbFF9daB53e5cD6", rpcs: ["https://polygon.drpc.org", "https://polygon-rpc.com", "https://1rpc.io/matic", "https://polygon-bor-rpc.publicnode.com"] },
-  bnb: { pm: "0x28e2Ea090877bF75740558f6BFB36A5ffeE9e9dF", rpcs: ["https://bsc.drpc.org", "https://1rpc.io/bnb", "https://bsc-rpc.publicnode.com"] },
+  bnb: { pm: "0x28e2Ea090877bF75740558f6BFB36A5ffeE9e9dF", rpcs: ["https://bsc.drpc.org", "https://bsc-mainnet.public.blastapi.io", "https://bsc.meowrpc.com", "https://binance.llamarpc.com", "https://bsc.blockpi.network/v1/rpc/public", "https://bsc-dataseed.bnbchain.org", "https://1rpc.io/bnb", "https://bsc-rpc.publicnode.com"] },
 };
 const TOPIC_PROTOCOL_FEE = "0xe9c42593e71f84403b84352cd168d693e2c9fcd1fdbcc3feb21d92b43e6696f9"; // ProtocolFeeUpdated(bytes32,uint24)
 const TOPIC_SWAP = "0x40e9cecb9f5f1f1c5b9c97dec2917b7ee92e57ba5563708daca94dd84ad7112f"; // Swap(bytes32,address,int128,int128,uint160,uint128,int24,uint24)
 const PROP100_EXECUTED = Date.UTC(2026, 6, 27, 15, 20) / 1000; // 27 Jul 2026 15:20 UTC
 
 let rpcId = 0;
+const RATE_LIMITED = /rate limit|request limit|too many requests|429|capacity|throttl/i;
+
 async function rpc(url, method, params, tries = 5) {
-  for (let i = 0; ; i++) {
+  for (let i = 0, slow = 0; ; i++) {
     try {
       const r = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method, params }) });
+      if (r.status === 429) throw new Error("429 too many requests");
       const j = await r.json();
       if (j.error) throw new Error(j.error.message ?? JSON.stringify(j.error));
       return j.result;
     } catch (e) {
+      // Free endpoints throttle bursts: back off and retry the same endpoint instead of giving up on it.
+      if (RATE_LIMITED.test(e.message) && slow++ < 5) {
+        await new Promise((r) => setTimeout(r, Math.min(60_000, 2_000 * 2 ** slow)));
+        i--;
+        continue;
+      }
       if (i >= tries || /range|limit|too many|exceed|10000|block|archive|token|pruned|key|auth|forbidden/i.test(e.message)) throw e;
       await new Promise((r) => setTimeout(r, 500 * 2 ** i));
     }
