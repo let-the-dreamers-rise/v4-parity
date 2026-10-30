@@ -18,6 +18,8 @@ const TOPIC_SWAP = "0x40e9cecb9f5f1f1c5b9c97dec2917b7ee92e57ba5563708daca94dd84a
 const PROP100_EXECUTED = Date.UTC(2026, 6, 27, 15, 20) / 1000; // 27 Jul 2026 15:20 UTC
 
 let rpcId = 0;
+// Stop cleanly before the CI job limit, so a slow free endpoint is reported instead of the job being cancelled.
+const DEADLINE = Date.now() + Number(process.env.SCAN_MINUTES ?? 85) * 60_000;
 const RATE_LIMITED = /rate limit|request limit|too many requests|429|capacity|throttl/i;
 
 async function rpc(url, method, params, tries = 5) {
@@ -72,6 +74,7 @@ async function logs(url, address, topic0, from, to, onProgress) {
   const out = [];
   let win = 5_000;
   for (let a = from; a <= to; ) {
+    if (Date.now() > DEADLINE) throw new Error(`time budget exhausted at block ${a} of ${to}; endpoint too slow for a full scan`);
     const b = Math.min(to, a + win - 1);
     try {
       out.push(...(await rpc(url, "eth_getLogs", [{ address, topics: [topic0], fromBlock: hex(a), toBlock: hex(b) }])));

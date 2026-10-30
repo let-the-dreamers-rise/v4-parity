@@ -9,7 +9,7 @@ on:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 110
     # A data scan, not a test: a chain whose free public RPCs refuse old logs is reported in the
     # summary instead of failing the run. Add an RPC_<CHAIN> repository secret to scan it fully.
     continue-on-error: true
