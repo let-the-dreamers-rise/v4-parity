@@ -1,0 +1,24 @@
+== 500/500 (Proposal 100 tier): packed 2048500, decoded arg typeof number = 2048500
+  quote zeroForOne=true exact-in : THROWS: Cannot convert 2048500 to a BigInt
+  quote zeroForOne=true exact-out: THROWS: Values: amountSpecified="1000000000000000000". Condition: pa
+  quote zeroForOne=false exact-in : THROWS: Cannot convert 2048500 to a BigInt
+  quote zeroForOne=false exact-out: THROWS: Values: amountSpecified="1000000000000000000". Condition: pa
+  next Swap replay: throws -> pool re-fetched from chain (heals)
+== 50/50: packed 204850, decoded arg typeof number = 204850
+  quote zeroForOne=true exact-in : THROWS: Cannot convert 204850 to a BigInt
+  quote zeroForOne=true exact-out: THROWS: Cannot convert 204850 to a BigInt
+  quote zeroForOne=false exact-in : THROWS: Cannot convert 204850 to a BigInt
+  quote zeroForOne=false exact-out: THROWS: Cannot convert 204850 to a BigInt
+  next Swap replay: throws -> pool re-fetched from chain (heals)
+== 250 on 0->1 only: packed 250, decoded arg typeof number = 250
+  quote zeroForOne=true exact-in : THROWS: Cannot convert 250 to a BigInt
+  quote zeroForOne=true exact-out: THROWS: Cannot convert 250 to a BigInt
+  quote zeroForOne=false exact-in : THROWS: Cannot convert 250 to a BigInt
+  quote zeroForOne=false exact-out: THROWS: Cannot convert 250 to a BigInt
+  next Swap replay: accepted, bad lpFee kept -> pool stays unquotable
+== switched off (0): packed 0, decoded arg typeof number = 0
+  quote zeroForOne=true exact-in : THROWS: Cannot convert 0 to a BigInt
+  quote zeroForOne=true exact-out: THROWS: Cannot convert 0 to a BigInt
+  quote zeroForOne=false exact-in : THROWS: Cannot convert 0 to a BigInt
+  quote zeroForOne=false exact-out: THROWS: Cannot convert 0 to a BigInt
+  next Swap replay: accepted, bad lpFee kept -> pool stays unquotable

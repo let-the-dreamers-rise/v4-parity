@@ -14,7 +14,7 @@ Oracle: Uniswap v4-core `46c6834698c48bc4a463a86d8420f4eb1d7f3b75`. Vectors: `ve
 |---|---|---|---|
 | `@uniswap/v4-sdk` 2.4.1 (TS, official) | No protocol-fee input at all; `Pool` passes the LP fee alone to `v3Swap` (`pool.ts:317-327`) | Overquotes exact-in output by ≈ pf/100 bps (+5.0 bps at pf=500) | Missing feature |
 | `uniswap-v4-sdk` 2.0.0 (Rust) | Same; the chain loader discards `slot0.protocolFee` (`extensions/pool.rs:87`) | +10.0 bps at pf=1000 | Missing feature |
-| ParaSwap `paraswap-dex-lib` @291393f0 | The `ProtocolFeeUpdated` event handler writes the packed protocol fee into **`lpFee`** (`uniswap-v4-pool-math.ts:511-513`) | Depends on the packed value. ≤1000 (one direction only, or fee off): +27.6 to +92.8 bps overquote, persists. 4096 to 999,999: underquote (−2,024 bps at 50/50), heals at the next Swap. ≥1,000,000, which includes Proposal 100's 500/500: **+522 bps overquote** and exact-out throws, heals at the next Swap | **Bug** |
+| ParaSwap `paraswap-dex-lib` @291393f0 | The `ProtocolFeeUpdated` event handler writes the protocol fee into **`lpFee`** (`uniswap-v4-pool-math.ts:511-513`), and passes it on as the JS number ethers v5 decodes for a uint24 (`uniswap-v4-pool.ts:245`) | In production every quote for that pool then throws (`Cannot convert … to a BigInt`), and `_getOutputs` catches it and returns null (`uniswap-v4.ts:155-181`), so **the pool silently drops out of ParaSwap routing**. It comes back when the next Swap event fails replay and forces a re-read from chain, which happens for any packed value ≥ 4096, including Proposal 100's 500/500. For a fee set on 0→1 only (packed ≤ 1000) or a fee switched off, the replay is accepted and the pool stays unquotable. If the decoded value were a bigint, the stored fee would misprice instead (+522 bps at 500/500); see the correction note below | **Bug** |
 | KyberSwap `kyberswap-dex-lib` v0.134.47 | Uses the 0→1 protocol fee for both directions (`pool_tracker.go:131-133`). Hook fee overrides drop the protocol fee (`pool_simulator.go:195-200`) | ±10 bps on asymmetric fees; +5 bps on dynamic-fee hook pools | **Bug** |
 
 | Propeller Heads `tycho-simulation` v0.258.0 | **None for protocol fees.** Fees are applied per direction, the v4 way, and every exact-in quote with the fee on matches. Other issues: dynamic-fee pools are quoted at a 0 LP fee unless the hook returns an override (`state.rs:117-124`, ~30 bps overquote); the returned state has stale ticks; refuses to quote when in-range liquidity is 0; one rounding-direction slip in `get_amount0_delta` | ~30 bps on affected dynamic-fee pools; the rest are wei-level or liveness issues | Missing feature / low |
@@ -23,12 +23,14 @@ Tycho shows that the protocol-fee bug class is avoidable. The vectors do not fla
 
 ## Impact under the live fee schedule (Proposal 100)
 
+**Correction (31 Oct 2026).** Earlier versions of this file said ParaSwap overquotes by +522 bps at live rates. That number came from `harness/live_schedule.ts`, which passed the fee to the handler as a bigint. Production decodes the event with ethers v5, which returns a uint24 as a JS number, and the handler does not convert it. Re-run with the real decoding (`harness/live_schedule_decoded.ts`), every quote throws instead, so the affected pool is excluded from routing rather than mispriced. The field bug and the fix are unchanged; the effect is liquidity loss, not a wrong price. `report-live-schedule.txt` is kept as the bigint case. It shows what the field bug does on any code path that converts the value first, and it is why the patch fixes both lines.
+
 Proposal 100 sets one protocol fee per static pool by LP tier, e.g. 1 bp LP fee → 0.25 bp, 5 bp → 1.25 bp, 30 bp → 5 bp, 100 bp → 10 bp. Aggregator hook pools get flat fees of 10 bp (3 bp on Base). Re-measured with those values:
 
 | Target | Effect on a 30 bp pool with a 5 bp protocol fee | Duration |
 |---|---|---|
 | Uniswap TS SDK, Rust SDK | exact-in output overquoted by +5.0 bps (+1.25 bps on 5 bp pools, +10 bps on 100 bp pools) | Permanent, on every fee-on pool |
-| ParaSwap | After `ProtocolFeeUpdated`, `lpFee` becomes 2,048,500 (packed 500/500, which is over 100%). Exact-in is overquoted by **+522 bps** and exact-out throws. Output is in `harnesses/paraswap/report-live-schedule.txt`, from `harness/live_schedule.ts`; expected values come from the v4-core Oracle | From each fee activation until the next Swap event fails replay and forces a re-fetch (verified). Persists if a fee is ever set on one direction only, or switched off |
+| ParaSwap | After `ProtocolFeeUpdated`, `lpFee` holds the number 2,048,500 (packed 500/500). Every exact-in and exact-out quote for the pool throws and the pool is dropped from routing. Output: `harnesses/paraswap/report-live-decoded.txt`, from `harness/live_schedule_decoded.ts`, which decodes the event with ethers v5 exactly as production does | From each fee activation until the next Swap event fails replay and forces a re-read (verified). Indefinite if a fee is ever set on one direction only, or switched off |
 | KyberSwap | Direction bug dormant: every live fee is symmetric (EXPOSURE.md). Hook-override bug drops the protocol fee on dynamic-fee hook pools in a fee family (+5 bps per 5 bps of fee) | Permanent on those pools |
 | Tycho | none for protocol fees | n/a |
 
@@ -47,6 +49,7 @@ Uniswap's own routing (`smart-order-router`) is not affected: it reads slot0 but
 **P1 (HIGH): the ProtocolFeeUpdated handler corrupts the LP fee.**
 - `setProtocolFee` does `poolState.slot0.lpFee = protocolFee` and never sets `slot0.protocolFee`. It is called from `handleProtocolFeeUpdatedEvent` (`uniswap-v4-pool.ts:244-251`).
 - Who is affected: any pool already being tracked when governance turns the fee on, changes it, or turns it off.
+- Production note: the handler receives a JS number (ethers v5 uint24), so with the unpatched code the quotes below throw and the pool is dropped from routing instead (see the correction above). The bigint figures below show the field bug on its own.
 - If the packed fee is ≤ 1000 (one direction only, or fee switched off), later Swap events replay without error and the wrong fee persists.
   - Oracle-backed repro: lpFee 3000, tickSpacing 60, sell 1e18 with pf 250/0. It overquotes by +30.1 bps (0→1) and +27.6 bps (1→0).
   - Vector `swap-1-2900` overquotes by +92.8 bps.
