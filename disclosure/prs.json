@@ -1,0 +1,4 @@
+[
+ {"upstream":"paraswap/paraswap-dex-lib","fork":"let-the-dreamers-rise/paraswap-dex-lib","base":"master","branch":"fix-v4-protocol-fee-updated","patch":"patches/paraswap-protocol-fee-updated.patch","body":"disclosure/pr-paraswap.md","issue":"1-paraswap.md","title":"fix(uniswap-v4): apply ProtocolFeeUpdated to slot0.protocolFee"},
+ {"upstream":"KyberNetwork/kyberswap-dex-lib","fork":"let-the-dreamers-rise/kyberswap-dex-lib","base":"main","branch":"fix-v4-protocol-fee-direction","patch":"patches/kyberswap-directional-protocol-fee.patch","body":"disclosure/pr-kyberswap.md","issue":"2-kyberswap.md","title":"fix(uniswap-v4): charge the protocol fee per swap direction and keep it under hook LP fee overrides"}
+]

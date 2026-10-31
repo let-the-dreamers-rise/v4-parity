@@ -1,6 +1,6 @@
-From a8a9b212eb9f573a03209be2d9ad75bee067b805 Mon Sep 17 00:00:00 2001
+From ba0c8a914fa129864843865e197cf7174b869f46 Mon Sep 17 00:00:00 2001
 From: Ashwin Goyal <letthedreamersrise@gmail.com>
-Date: Tue, 20 Oct 2026 14:04:40 +0000
+Date: Sat, 31 Oct 2026 23:24:05 +0000
 Subject: [PATCH] fix(uniswap-v4): charge the protocol fee per swap direction
  and keep it under hook LP fee overrides
 
@@ -29,19 +29,19 @@ ProtocolFeeLibrary.calculateSwapFee to the overriding LP fee. An override to
 
 Tests use amounts from v4-core's PoolManager.swap on the same pools.
 
-Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_014vgMhcJcki79chGpKxYYGr
 ---
  pkg/liquidity-source/uniswap/v4/hooks.go      |  27 +++
- .../uniswap/v4/pool_simulator.go              |  94 ++++++---
+ .../uniswap/v4/pool_simulator.go              |  95 ++++++---
  .../v4/pool_simulator_protocol_fee_test.go    | 198 ++++++++++++++++++
  .../uniswap/v4/pool_tracker.go                |   8 +-
  pkg/liquidity-source/uniswap/v4/type.go       |  17 +-
- 5 files changed, 308 insertions(+), 36 deletions(-)
+ 5 files changed, 309 insertions(+), 36 deletions(-)
  create mode 100644 pkg/liquidity-source/uniswap/v4/pool_simulator_protocol_fee_test.go
 
 diff --git a/pkg/liquidity-source/uniswap/v4/hooks.go b/pkg/liquidity-source/uniswap/v4/hooks.go
-index a6eea5a..2dc0cbd 100644
+index eae40f7..cfdb208 100644
 --- a/pkg/liquidity-source/uniswap/v4/hooks.go
 +++ b/pkg/liquidity-source/uniswap/v4/hooks.go
 @@ -77,6 +77,33 @@ type FeeAmount = uniswapv3.FeeAmount
@@ -79,13 +79,14 @@ index a6eea5a..2dc0cbd 100644
  type HookOption int
  
 diff --git a/pkg/liquidity-source/uniswap/v4/pool_simulator.go b/pkg/liquidity-source/uniswap/v4/pool_simulator.go
-index 4b88c01..315a129 100644
+index 425e6c4..92bd48a 100644
 --- a/pkg/liquidity-source/uniswap/v4/pool_simulator.go
 +++ b/pkg/liquidity-source/uniswap/v4/pool_simulator.go
-@@ -24,6 +24,10 @@ type PoolSimulator struct {
- 	hook          Hook
- 	chainID       valueobject.ChainID
- 	tokenWrappers []ITokenWrapper
+@@ -31,6 +31,11 @@ type PoolSimulator struct {
+ 	exchange  string              `msgpack:"-"` // hook exchange with the fork dexID
+ 	tokens    []string            `msgpack:"-"`
+ 	canSwapTo map[string][]string `msgpack:"-"`
++
 +	// protocolFee is slot0's packed protocol fee and lpFee the LP fee it applies on top of
 +	// (slot0.lpFee, or the pool's SwapFee while the protocol fee is off).
 +	protocolFee uint32
@@ -93,7 +94,7 @@ index 4b88c01..315a129 100644
  }
  
  var _ = pool.RegisterFactory(DexType, func(params pool.FactoryParams) (*PoolSimulator, error) {
-@@ -78,6 +82,13 @@ func newPoolSimulator(entityPool entity.Pool, chainID valueobject.ChainID, stale
+@@ -92,6 +97,13 @@ func newPoolSimulator(entityPool entity.Pool, chainID valueobject.ChainID, stale
  	}
  	v3PoolSimulator.Gas = DefaultGas
  
@@ -104,16 +105,20 @@ index 4b88c01..315a129 100644
 +		lpFee = FeeAmount(extra.LpFee)
 +	}
 +
- 	return &PoolSimulator{
+ 	p := &PoolSimulator{
  		PoolSimulator: v3PoolSimulator,
  		staticExtra:   staticExtra,
-@@ -86,9 +97,42 @@ func newPoolSimulator(entityPool entity.Pool, chainID valueobject.ChainID, stale
+@@ -101,6 +113,8 @@ func newPoolSimulator(entityPool entity.Pool, chainID valueobject.ChainID, stale
  		// few_v2 is listed before few_v1 so, for a token pair with pools in both
  		// generations (e.g. WBTC/fwWBTC), the current/active generation wins.
  		tokenWrappers: []ITokenWrapper{few_v2.NewTokenWrapper(), few_v1.NewTokenWrapper()},
 +		protocolFee:   extra.ProtocolFee,
 +		lpFee:         lpFee,
- 	}, nil
+ 	}
+ 	p.tokens = p.computeTokens()
+ 	p.canSwapTo = make(map[string][]string, len(p.tokens))
+@@ -110,6 +124,37 @@ func newPoolSimulator(entityPool entity.Pool, chainID valueobject.ChainID, stale
+ 	return p, nil
  }
  
 +// swapFee is the fee PoolManager.swap charges in the given direction: the LP fee (a dynamic-fee
@@ -150,7 +155,7 @@ index 4b88c01..315a129 100644
  func (p *PoolSimulator) CalcAmountOut(param pool.CalcAmountOutParams) (swapResult *pool.CalcAmountOutResult, err error) {
  	originalTokenIn, originalTokenOut := param.TokenAmountIn.Token, param.TokenOut
  	var wrapAdditionalGas int64
-@@ -163,14 +207,15 @@ func (p *PoolSimulator) CalcAmountOut(param pool.CalcAmountOutParams) (swapResul
+@@ -184,14 +229,15 @@ func (p *PoolSimulator) CalcAmountOut(param pool.CalcAmountOutParams) (swapResul
  		}
  	}
  
@@ -170,7 +175,7 @@ index 4b88c01..315a129 100644
  	amountIn := new(big.Int).Set(param.TokenAmountIn.Amount)
  
  	if p.hook.CanBeforeSwap(p.staticExtra.HooksAddress) {
-@@ -188,20 +233,14 @@ func (p *PoolSimulator) CalcAmountOut(param pool.CalcAmountOutParams) (swapResul
+@@ -209,20 +255,14 @@ func (p *PoolSimulator) CalcAmountOut(param pool.CalcAmountOutParams) (swapResul
  		if amountIn.Sub(amountIn, beforeSwapResult.DeltaSpecified).Sign() < 0 {
  			return nil, ErrInvalidAmountIn
  		}
@@ -196,7 +201,7 @@ index 4b88c01..315a129 100644
  		TokenAmountIn: pool.TokenAmount{
  			Token:  tokenIn,
  			Amount: amountIn,
-@@ -309,14 +348,15 @@ func (p *PoolSimulator) CalcAmountIn(param pool.CalcAmountInParams) (swapResult
+@@ -330,14 +370,15 @@ func (p *PoolSimulator) CalcAmountIn(param pool.CalcAmountInParams) (swapResult
  		}
  	}
  
@@ -216,7 +221,7 @@ index 4b88c01..315a129 100644
  	amountOut := new(big.Int).Set(param.TokenAmountOut.Amount)
  
  	if p.hook.CanBeforeSwap(p.staticExtra.HooksAddress) {
-@@ -334,20 +374,14 @@ func (p *PoolSimulator) CalcAmountIn(param pool.CalcAmountInParams) (swapResult
+@@ -355,20 +396,14 @@ func (p *PoolSimulator) CalcAmountIn(param pool.CalcAmountInParams) (swapResult
  		if amountOut.Add(amountOut, beforeSwapResult.DeltaSpecified).Sign() < 0 {
  			return nil, ErrInvalidAmountOut
  		}
@@ -447,10 +452,10 @@ index 0000000..a5bb657
 +	assert.Equal(t, "996002007979012046", quoteExactIn(t, sim, pfToken1, pfToken0))
 +}
 diff --git a/pkg/liquidity-source/uniswap/v4/pool_tracker.go b/pkg/liquidity-source/uniswap/v4/pool_tracker.go
-index 06f89e7..6cc9250 100644
+index c38c2f1..579a132 100644
 --- a/pkg/liquidity-source/uniswap/v4/pool_tracker.go
 +++ b/pkg/liquidity-source/uniswap/v4/pool_tracker.go
-@@ -128,9 +128,11 @@ func (t *PoolTracker) fetchOnchainState(
+@@ -138,9 +138,11 @@ func (t *PoolTracker) fetchOnchainState(
  	}
  	hookParam.BlockNumber = res.BlockNumber
  
@@ -466,10 +471,10 @@ index 06f89e7..6cc9250 100644
  	return result, hook, hookParam, nil
  }
 diff --git a/pkg/liquidity-source/uniswap/v4/type.go b/pkg/liquidity-source/uniswap/v4/type.go
-index 5760352..e33af90 100644
+index 4528385..51e6990 100644
 --- a/pkg/liquidity-source/uniswap/v4/type.go
 +++ b/pkg/liquidity-source/uniswap/v4/type.go
-@@ -49,12 +49,19 @@ type Extra struct {
+@@ -51,12 +51,19 @@ type Extra struct {
  	// TrackedAt (lv) is the unix time the tracker last confirmed the pool's state, kept outside hX
  	// so hX stays pure chain state. Only HookWithLiveness hooks carry it.
  	TrackedAt int64 `json:"lv,omitempty"`
@@ -491,7 +496,7 @@ index 5760352..e33af90 100644
  }
  
  type Slot0Data struct {
-@@ -78,7 +85,7 @@ type FetchRPCResult struct {
+@@ -80,7 +87,7 @@ type FetchRPCResult struct {
  // writer of the tracked Extra goes through it, so a field added here reaches
  // all of them.
  func (r *FetchRPCResult) ToExtra(ticks []Tick) Extra {
@@ -500,7 +505,7 @@ index 5760352..e33af90 100644
  		Extra: &uniswapv3.Extra{
  			Liquidity:    r.Liquidity,
  			TickSpacing:  uint64(r.TickSpacing),
-@@ -89,6 +96,10 @@ func (r *FetchRPCResult) ToExtra(ticks []Tick) Extra {
+@@ -91,6 +98,10 @@ func (r *FetchRPCResult) ToExtra(ticks []Tick) Extra {
  		HookExtra: r.HookExtra,
  		TrackedAt: r.TrackedAt,
  	}

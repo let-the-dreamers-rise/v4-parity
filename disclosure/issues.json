@@ -1,0 +1,27 @@
+[
+ {
+  "file": "1-paraswap.md",
+  "repo": "paraswap/paraswap-dex-lib",
+  "title": "uniswap-v4: ProtocolFeeUpdated handler writes the protocol fee into slot0.lpFee"
+ },
+ {
+  "file": "2-kyberswap.md",
+  "repo": "KyberNetwork/kyberswap-dex-lib",
+  "title": "uniswap-v4: 1\u21920 swaps use the 0\u21921 protocol fee, and hook fee overrides drop the protocol fee"
+ },
+ {
+  "file": "3-uniswap-sdks.md",
+  "repo": "Uniswap/sdks",
+  "title": "v4-sdk: Pool has no protocol-fee input, so off-chain quotes are wrong since v4 fees went live; dynamic-fee pools with flagless hooks are quoted at 838% fee"
+ },
+ {
+  "file": "4-rust-sdk.md",
+  "repo": "shuhuiluo/uniswap-v4-sdk-rs",
+  "title": "Protocol fee ignored in swap math; dynamic-fee pools from `from_pool_key` can't be quoted"
+ },
+ {
+  "file": "5-tycho.md",
+  "repo": "propeller-heads/tycho-simulation",
+  "title": "UniswapV4State: dynamic-fee pools are quoted with a 0 LP fee unless beforeSwap returns an override"
+ }
+]

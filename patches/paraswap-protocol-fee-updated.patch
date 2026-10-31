@@ -1,23 +1,24 @@
-From 9603b87182c62e21eb9c5fec162474815f66261e Mon Sep 17 00:00:00 2001
+From 3dbbcbfdffa40cb7cbd67e8128ad69c801f492b4 Mon Sep 17 00:00:00 2001
 From: Ashwin Goyal <letthedreamersrise@gmail.com>
-Date: Tue, 20 Oct 2026 13:40:58 +0000
+Date: Sat, 31 Oct 2026 23:24:06 +0000
 Subject: [PATCH] fix(uniswap-v4): apply ProtocolFeeUpdated to
  slot0.protocolFee
 
-`setProtocolFee` wrote the new protocol fee into `slot0.lpFee`, so after a
-`ProtocolFeeUpdated` event the pool was priced with the packed protocol fee
-(e.g. 204850 for 50/50 pips) as its LP fee, and the real protocol fee was
-never applied. Quotes stayed wrong until the state was re-fetched.
+setProtocolFee wrote the new protocol fee into slot0.lpFee, and the event
+handler passed it on as the JS number ethers v5 decodes for a uint24. After a
+ProtocolFeeUpdated event every quote for the pool threw (BigInt.asUintN on a
+number), _getOutputs returned null, and the pool dropped out of routing until
+a later Swap replay failed and forced a re-fetch. For a fee set on 0->1 only,
+or switched off, the replay succeeded and the pool stayed unquotable.
 
-Write the value to `slot0.protocolFee` instead, and convert the decoded
-`uint24` (a JS number from ethers) to bigint in the event handler so the
-slot0 type holds and `ProtocolFeeLibrary.getOneForZeroFee` (`>> 12n`) does
-not throw on the next Swap event.
+Write the value to slot0.protocolFee instead, and convert the decoded uint24
+to bigint in the handler so the slot0 type holds and
+ProtocolFeeLibrary.getOneForZeroFee (>> 12n) does not throw on the next Swap.
 
 Add a unit test that decodes a real ProtocolFeeUpdated log, runs the handler
 and checks the quotes against amounts from v4-core's PoolManager.swap.
 
-Co-Authored-By: Claude Opus 5.5 (1M context) <noreply@anthropic.com>
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_014vgMhcJcki79chGpKxYYGr
 ---
  .../contract-math/uniswap-v4-pool-math.ts     |   2 +-
