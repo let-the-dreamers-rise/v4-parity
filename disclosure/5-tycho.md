@@ -1,3 +1,5 @@
+Re-checked on the `propeller-heads/tycho` monorepo at f127deb (31 Oct 2026): the dynamic-fee issue below is still present (`crates/tycho-simulation/src/evm/protocol/uniswap_v4/state.rs:192-198` returns 0 for a dynamic LP fee, and the `ethereum-uniswap-v4` substream still emits no `fee` attribute). The smaller items were found at v0.258.0 of the old `tycho-simulation` repo, and some may have changed since; line numbers below are from that version.
+
 At v0.258.0 (092ffc62), dynamic-fee pools (PoolKey fee 0x800000) get an LP fee of 0 unless the hook's beforeSwap returns an override (`src/evm/protocol/uniswap_v4/state.rs:117-124`). On-chain, v4 charges `slot0.lpFee`, which a hook can set with `PoolManager.updateDynamicLPFee`. That call emits no event, and the decoder only reads the static `key_lp_fee`.
 
 `delta_transition` reads a `"fee"` attribute that the v4 substream (`tycho-protocol-sdk` @71923286) never emits. As a result:

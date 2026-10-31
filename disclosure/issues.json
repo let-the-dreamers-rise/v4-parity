@@ -7,7 +7,7 @@
  {
   "file": "2-kyberswap.md",
   "repo": "KyberNetwork/kyberswap-dex-lib",
-  "title": "uniswap-v4: 1\u21920 swaps use the 0\u21921 protocol fee, and hook fee overrides drop the protocol fee"
+  "title": "uniswap-v4: 1→0 swaps use the 0→1 protocol fee, and hook fee overrides drop the protocol fee"
  },
  {
   "file": "3-uniswap-sdks.md",
@@ -21,7 +21,7 @@
  },
  {
   "file": "5-tycho.md",
-  "repo": "propeller-heads/tycho-simulation",
+  "repo": "propeller-heads/tycho",
   "title": "UniswapV4State: dynamic-fee pools are quoted with a 0 LP fee unless beforeSwap returns an override"
  }
 ]
