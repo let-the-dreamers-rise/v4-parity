@@ -1,0 +1,22 @@
+name: kit
+# Runs the published GitHub Action exactly as an integrator would, with the example
+# @uniswap/v4-sdk adapter, so the Action itself is tested on every commit.
+on: [push, pull_request]
+jobs:
+  uniswap-v4-sdk:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { vectors: [swaps-nopf, swaps] }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+        working-directory: kit/adapters/uniswap-v4-sdk
+      - uses: ./
+        with:
+          command: node kit/adapters/uniswap-v4-sdk/adapter.mjs
+          vectors: ${{ matrix.vectors }}
+          # The SDK's current failures are recorded so CI stays green and catches anything new.
+          baseline: kit/adapters/uniswap-v4-sdk/known-${{ matrix.vectors }}.json

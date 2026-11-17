@@ -1,0 +1,17 @@
+{
+ "note": "v4-parity vectors this quoter is known to fail; remove ids as they are fixed",
+ "vectors": "vectors-nopf/swaps.json",
+ "known": [
+  "swap-2-1147",
+  "swap-2-1210",
+  "swap-2-1254",
+  "swap-2-2160",
+  "swap-2-2523",
+  "swap-2-2544",
+  "swap-2-2853",
+  "swap-2-374",
+  "swap-2-48",
+  "swap-2-896",
+  "swap-2-960"
+ ]
+}

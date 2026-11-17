@@ -9,6 +9,10 @@ proposal 100 (executed 27 Jul 2026) turned on v4 protocol fees, which v4 charges
 LP fee (unlike v3, where the protocol takes a cut of the LP fee), every simulator that was ported
 from v3 math has a new way to be wrong.
 
+## Check your own quoter
+
+Add the GitHub Action and a small adapter, and every commit is checked against `PoolManager`: see [kit/README.md](kit/README.md).
+
 ## What is here
 
 | Path | What |
