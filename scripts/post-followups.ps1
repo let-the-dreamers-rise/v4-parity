@@ -15,7 +15,8 @@ foreach ($c in $list) {
   $file = Join-Path $work $c.file
   Invoke-WebRequest -UseBasicParsing "$Raw/$($c.file)" -OutFile $file
   $first = (Get-Content -Encoding UTF8 $file | Select-Object -First 1).Substring(0, 40)
-  $already = gh api "repos/$($c.repo)/issues/$($c.number)/comments" --paginate --jq ".[] | select(.user.login==`"$me`") | .body" 2>$null | Select-String -SimpleMatch $first
+  $comments = gh api "repos/$($c.repo)/issues/$($c.number)/comments?per_page=100" 2>$null | ConvertFrom-Json
+  $already = $comments | Where-Object { $_.user.login -eq $me -and $_.body.Contains($first) }
   if ($already) { Write-Host "Already posted on $($c.repo)#$($c.number), skipping."; continue }
   if ($c.kind -eq 'pr') { $url = gh pr comment $c.number -R $c.repo --body-file $file } else { $url = gh issue comment $c.number -R $c.repo --body-file $file }
   if ($LASTEXITCODE -ne 0) { Write-Host "Could not comment on $($c.repo)#$($c.number); carrying on." -ForegroundColor Yellow; continue }
