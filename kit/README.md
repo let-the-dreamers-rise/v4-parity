@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: let-the-dreamers-rise/v4-parity@v1
+      - uses: let-the-dreamers-rise/v4-parity@main   # or pin a commit SHA
         with:
           command: node scripts/v4-parity-adapter.mjs   # or: go run ./cmd/v4parity, cargo run --bin v4parity ...
           vectors: swaps                                # protocol fees on; swaps-nopf = fees off
