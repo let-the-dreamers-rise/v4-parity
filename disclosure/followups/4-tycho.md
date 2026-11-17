@@ -1,0 +1,1 @@
+Follow-up: v4-parity is now a GitHub Action, so this can run as a regression check. The Tycho harness (tycho-simulation's UniswapV4State) passes every protocol-fee vector, and the only gaps are the ones in this issue. If you'd like it in CI, I can open a PR with the workflow and adapter. Known gaps are baselined, so it only fails on new divergences.

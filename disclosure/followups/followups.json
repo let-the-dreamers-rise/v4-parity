@@ -1,0 +1,26 @@
+[
+ {
+  "repo": "VeloraDEX/paraswap-dex-lib",
+  "kind": "pr",
+  "number": "1271",
+  "file": "1-paraswap.md"
+ },
+ {
+  "repo": "KyberNetwork/kyberswap-dex-lib",
+  "kind": "pr",
+  "number": "1879",
+  "file": "2-kyberswap.md"
+ },
+ {
+  "repo": "shuhuiluo/uniswap-v4-sdk-rs",
+  "kind": "issue",
+  "number": "74",
+  "file": "3-rust-sdk.md"
+ },
+ {
+  "repo": "propeller-heads/tycho",
+  "kind": "issue",
+  "number": "1712",
+  "file": "4-tycho.md"
+ }
+]

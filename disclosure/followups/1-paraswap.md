@@ -1,0 +1,3 @@
+Hi, a gentle ping on this one. The bug is still on master. When ProtocolFeeUpdated fires, the handler writes the protocol fee into slot0.lpFee. The value comes in as a JS number from the ethers v5 decoding, so every quote for that pool throws and the pool drops out of routing until its next Swap. For a pool whose fee is only on 0→1, or that has been switched off, it stays out.
+
+Most v4 swaps on Ethereum, Arbitrum and OP Mainnet now go through fee-on pools (69% on 25 Oct), so this affects real routing. The PR has the fix and tests, and I'm happy to rebase it or change anything you'd like. For context, KyberSwap merged the equivalent fix today (KyberNetwork/kyberswap-dex-lib#1879).
